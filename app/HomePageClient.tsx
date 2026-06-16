@@ -86,6 +86,7 @@ export default function HomePageClient() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                   <Link
                     href="/contact"
+                    data-track="cta-quote"
                     className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-black py-4 px-8 rounded-2xl text-lg transition-all amber-glow shadow-xl"
                   >
                     Get Your Free Quote &rarr;
@@ -93,6 +94,7 @@ export default function HomePageClient() {
                 </motion.div>
                 <motion.a
                   href="tel:6477979471"
+                  data-track="phone-click"
                   whileHover={{ scale: 1.03 }}
                   className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-red-500 text-white hover:text-red-400 font-bold py-4 px-8 rounded-2xl text-lg transition-all"
                 >
@@ -367,12 +369,12 @@ export default function HomePageClient() {
           />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { label: "Kitchen Renovation – St. Catharines", img: IMAGES.home.portfolio_kitchen },
-              { label: "Bathroom Remodel – Niagara Falls", img: IMAGES.home.portfolio_bathroom },
-              { label: "Basement Finish – Welland", img: IMAGES.home.portfolio_basement },
-              { label: "Home Addition – Grimsby", img: IMAGES.home.portfolio_addition },
-              { label: "New Roof – Fort Erie", img: IMAGES.home.portfolio_roofing },
-              { label: "Flooring Install – Niagara-on-the-Lake", img: IMAGES.home.portfolio_flooring },
+              { label: "Kitchen Renovation Project", img: IMAGES.home.portfolio_kitchen },
+              { label: "Bathroom Renovation Project", img: IMAGES.home.portfolio_bathroom },
+              { label: "Basement Finishing Project", img: IMAGES.home.portfolio_basement },
+              { label: "Home Addition Project", img: IMAGES.home.portfolio_addition },
+              { label: "Roofing Project", img: IMAGES.home.portfolio_roofing },
+              { label: "Flooring Installation Project", img: IMAGES.home.portfolio_flooring },
             ].map((item, i) => (
               <motion.div
                 key={i}

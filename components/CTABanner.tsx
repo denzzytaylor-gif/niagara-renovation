@@ -82,6 +82,7 @@ export default function CTABanner({
             >
               <Link
                 href="/contact"
+                data-track="cta-quote"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-black py-4 px-8 rounded-2xl text-lg transition-all amber-glow shadow-xl"
               >
                 Get My Free Quote Today
@@ -93,6 +94,7 @@ export default function CTABanner({
 
             <motion.a
               href="tel:6477979471"
+              data-track="phone-click"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 border-2 border-white/30 hover:border-red-500 text-white hover:text-red-400 font-bold py-4 px-8 rounded-2xl text-lg transition-all"

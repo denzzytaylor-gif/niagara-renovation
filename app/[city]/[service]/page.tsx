@@ -48,6 +48,54 @@ const cityServiceBodyH2: Record<string, (city: string) => string> = {
   "home-additions": (city) => `Home Addition Services for ${city} Properties`,
 };
 
+const serviceKeyInclusions: Record<string, string[]> = {
+  "basement-finishing": [
+    "Moisture assessment and waterproofing remediation",
+    "Framing, insulation, drywall, and painting",
+    "Pot lighting and electrical panel upgrades",
+    "Bathroom rough-in and full bathroom finishing",
+    "Flooring: LVP, carpet, or tile",
+    "Legal suite and in-law apartment builds",
+    "Building permit management",
+  ],
+  "kitchen-renovations": [
+    "Custom or semi-custom cabinetry design and installation",
+    "Quartz, granite, or laminate countertops",
+    "Kitchen island design and construction",
+    "Under-cabinet and pot-light lighting",
+    "Plumbing, electrical, and flooring",
+    "Full project management — one contract, one team",
+    "Building permit coordination where required",
+  ],
+  "additions-adu": [
+    "Property and zoning review before any commitment",
+    "Architectural design and engineering drawings",
+    "Building permit applications and management",
+    "Full structural, framing, and exterior work",
+    "Separate electrical service and plumbing",
+    "Complete interior finishing to move-in ready",
+    "Final occupancy certificate coordination",
+  ],
+  "general-contracting": [
+    "Complete project management and site supervision",
+    "Design coordination and permit management",
+    "Licensed sub-trade hiring and scheduling",
+    "Material procurement and supply chain management",
+    "Budget tracking and transparent reporting",
+    "Structural and engineering coordination",
+    "Final inspection and occupancy support",
+  ],
+  "home-additions": [
+    "Site feasibility and zoning review",
+    "Architectural design and permit drawings",
+    "Foundation, framing, and structural work",
+    "Roofing tie-in and exterior cladding",
+    "Electrical, plumbing, and HVAC extension",
+    "Full interior finishing to match existing home",
+    "Building permit management",
+  ],
+};
+
 const cityServiceRelatedLinks: Record<string, Array<{ href: string; label: string }>> = {
   "basement-finishing": [
     { href: "/services/additions-adu", label: "ADU Builds & Legal Suites" },
@@ -159,6 +207,16 @@ export default async function CityServicePage({ params }: PageProps) {
   const bodyCopy = getBodyCopy(service.name, service.slug, city.name, city.landmark, (city as CityServiceData).neighbourhoods ?? []);
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.niagararenovationcompany.com" },
+      { "@type": "ListItem", "position": 2, "name": city.name, "item": `https://www.niagararenovationcompany.com/${city.slug}` },
+      { "@type": "ListItem", "position": 3, "name": service.name, "item": `https://www.niagararenovationcompany.com/${city.slug}/${service.slug}` },
+    ],
+  };
+
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -239,6 +297,7 @@ export default async function CityServicePage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
@@ -267,7 +326,7 @@ export default async function CityServicePage({ params }: PageProps) {
               <p className="text-gray-300 text-xl mb-6">
                 Expert {service.name.toLowerCase()} serving {city.name} homeowners. Licensed, insured, and trusted across Niagara Region.
               </p>
-              <a href="tel:6477979471" className="inline-flex items-center gap-2 text-white hover:text-red-400 font-bold text-lg transition-colors">
+              <a href="tel:6477979471" data-track="phone-click" className="inline-flex items-center gap-2 text-white hover:text-red-400 font-bold text-lg transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
@@ -290,6 +349,21 @@ export default async function CityServicePage({ params }: PageProps) {
             image={serviceImage}
             imageAlt={`${service.name} in ${city.name}, Ontario`}
           />
+          {serviceKeyInclusions[service.slug] && (
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 mb-8">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">What&apos;s Included</h3>
+              <ul className="grid sm:grid-cols-2 gap-2">
+                {serviceKeyInclusions[service.slug].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
+                    <svg className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {bodyCopy.split("\n\n").filter(p => p.trim()).map((paragraph, i) => (
             <p key={i} className="text-gray-700 text-lg leading-relaxed mb-5">{paragraph.trim()}</p>
           ))}

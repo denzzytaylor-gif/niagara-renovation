@@ -26,7 +26,7 @@ const serviceDetails: Record<string, {
   faq: { q: string; a: string }[];
 }> = {
   "kitchen-renovations": {
-    intro: "Your kitchen is the heart of your home, and a well-designed renovation can transform the way your family lives and entertains. At Niagara Renovation Company, we specialize in full kitchen renovations across Niagara Region, Ontario — from custom cabinetry and quartz countertops to premium appliance packages and open-concept layouts. With over 15 years of experience and hundreds of kitchens completed, our team brings expertise, precision, and a genuine passion for beautiful design to every project. Whether you're looking for a modern minimalist kitchen, a warm traditional space, or a bold contemporary design, we work closely with you to create a kitchen that reflects your personal style and meets your family's unique needs.",
+    intro: "Your kitchen is the heart of your home, and a well-designed renovation transforms the way your family lives and entertains. At Niagara Renovation Company, we specialize in full kitchen renovations across Niagara Region — from custom cabinetry and quartz countertops to premium appliance packages and open-concept layouts. Whether you want a modern minimalist kitchen, a warm traditional space, or a bold contemporary design, we work closely with you to create a kitchen that reflects your style and meets your family's needs.\n\nOur kitchen renovation service covers every element of the project under one roof — custom or semi-custom cabinetry, countertop supply and installation (quartz, granite, laminate), kitchen island design and construction, tile backsplash, under-cabinet and pot-light lighting, plumbing rough-in and fixture installation, electrical upgrades, and new flooring. Managing every trade eliminates coordination headaches and gives you a single point of accountability from demolition to final walkthrough.\n\nWe provide detailed written quotes before any work begins, with no surprise charges and no scope changes without your written approval. Our 5-year workmanship warranty ensures our commitment to your kitchen extends long after the last cabinet door is hung. Call (647) 797-9471 or fill out the form above to arrange your free, no-obligation Niagara kitchen renovation consultation.",
     included: [
       "Custom or semi-custom cabinetry design and installation",
       "Countertop supply and installation (quartz, granite, laminate)",
@@ -88,7 +88,7 @@ const serviceDetails: Record<string, {
     ],
   },
   "home-additions": {
-    intro: "When your family has outgrown your home, a well-planned addition is often the best solution — allowing you to gain the space you need without the disruption and cost of moving. Niagara Renovation Company designs and builds home additions throughout Niagara Region, Ontario, including main floor extensions, second-story additions, sunrooms, garage conversions, and in-law suites. Our team of architects, engineers, and skilled tradespeople works closely with you from the initial design concept through to the final coat of paint, ensuring your addition seamlessly integrates with your existing home — matching rooflines, exterior cladding, trim details, and interior finishes for a result that looks like it was always there.",
+    intro: "When your family has outgrown your home, a well-planned addition is the best way to gain the space you need without the disruption and cost of moving. Niagara Renovation Company designs and builds home additions throughout Niagara Region — main floor extensions, second-storey additions, sunrooms, garage conversions, and in-law suites — built to integrate seamlessly with your existing home.\n\nOur team of architects, engineers, and skilled tradespeople works with you from initial design through to the final coat of paint, matching rooflines, exterior cladding, trim details, and interior finishes so the addition looks like it was always part of the home. We handle all permit applications, structural engineering coordination, and required inspections on your behalf — you never need to deal with the building department yourself.\n\nOur home addition service is truly full-service: site feasibility, architectural design, foundation and structural work, framing, insulation, roofing, windows and exterior cladding, electrical, plumbing, drywall, flooring, cabinetry, and all interior finishing. A quality addition built by licensed, insured contractors with proper permits is a permanent, insurable improvement reflected in your property's appraised value. Contact us at (647) 797-9471 or fill out the form above to start planning your addition today.",
     included: [
       "Architectural design and engineering",
       "Building permit applications and management",
@@ -188,7 +188,7 @@ const serviceDetails: Record<string, {
     ],
   },
   "general-contracting": {
-    intro: "When your renovation project involves multiple trades, complex sequencing, or significant structural changes, you need an experienced general contractor who can coordinate every aspect of the work seamlessly. Niagara Renovation Company provides full-service general contracting throughout Niagara Region, Ontario — managing everything from initial design and engineering through permit applications, trade scheduling, material procurement, site supervision, and final inspection. As a licensed general contractor, we take complete responsibility for the success of your project. Our role is to protect your interests, your home, and your budget throughout the renovation process. We work with a carefully vetted network of licensed sub-trades — electricians, plumbers, HVAC technicians, roofers, and specialty contractors — and manage their work to ensure quality, safety, and schedule compliance at every stage. Whether you are planning a whole-home renovation, a complex structural remodel, a multi-unit residential project, or a significant addition that requires comprehensive engineering, our general contracting team has the systems, experience, and licensed personnel to deliver a superior result. We serve homeowners and property investors across all 12 municipalities in Niagara Region, from St. Catharines and Niagara Falls to Grimsby, Fort Erie, and every community in between. Our detailed pre-construction planning process ensures that surprises are minimized, budgets are respected, and timelines are realistic from day one.",
+    intro: "When your renovation project involves multiple trades, complex sequencing, or significant structural changes, you need an experienced general contractor who can coordinate everything seamlessly. Niagara Renovation Company provides full-service general contracting throughout Niagara Region — managing everything from initial design and engineering through permit applications, trade scheduling, material procurement, site supervision, and final inspection.\n\nAs a licensed general contractor, we take complete responsibility for the outcome of your project. We work with a carefully vetted network of licensed sub-trades — electricians, plumbers, HVAC technicians, roofers, and specialty contractors — managing their work to ensure quality, safety, and schedule compliance at every stage. For homeowners and property investors planning whole-home renovations, complex structural remodels, multi-unit residential projects, or significant additions requiring comprehensive engineering, our general contracting team has the systems and experience to deliver.\n\nOur detailed pre-construction planning process ensures surprises are minimized, budgets are respected, and timelines are realistic from day one. Every project includes a comprehensive written contract covering the full scope of work, materials, payment schedule, timeline, and change-order process. We serve homeowners and property investors across all 12 Niagara Region municipalities — call (647) 797-9471 or fill out the form above to discuss your project.",
     included: [
       "Complete project management and site supervision",
       "Design coordination and architectural liaison",
@@ -367,13 +367,50 @@ export default async function ServicePage({ params }: PageProps) {
   const testimonial = TESTIMONIALS.find(t => t.service === service.name) || TESTIMONIALS[0];
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
 
+  const serviceTypeMap: Record<string, string> = {
+    "basement-finishing": "Basement Renovation",
+    "kitchen-renovations": "Kitchen Renovation",
+    "additions-adu": "Accessory Dwelling Unit Construction",
+    "general-contracting": "General Contracting",
+    "home-additions": "Home Addition Construction",
+    "bathroom-renovations": "Bathroom Renovation",
+    "roofing": "Roofing",
+    "flooring": "Flooring Installation",
+    "painting": "Painting",
+    "windows-and-doors": "Window and Door Installation",
+    "decks-outdoor": "Deck Construction",
+    "commercial-renovations": "Commercial Renovation",
+  };
+
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": service.name,
-    "description": service.shortDesc,
-    "provider": { "@type": "LocalBusiness", "name": "Niagara Renovation Company" },
+    "serviceType": serviceTypeMap[service.slug] ?? service.name,
+    "description": serviceSEO[service.slug]?.description ?? service.shortDesc,
+    "provider": {
+      "@type": "HomeAndConstructionBusiness",
+      "name": "Niagara Renovation Company",
+      "telephone": "+16477979471",
+      "url": "https://www.niagararenovationcompany.com",
+    },
     "areaServed": { "@type": "AdministrativeArea", "name": "Niagara Region, Ontario" },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CAD",
+      "description": "Free estimate — no obligation",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.niagararenovationcompany.com" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.niagararenovationcompany.com/services" },
+      { "@type": "ListItem", "position": 3, "name": service.name, "item": `https://www.niagararenovationcompany.com/services/${service.slug}` },
+    ],
   };
 
   const faqSchema = {
@@ -397,6 +434,7 @@ export default async function ServicePage({ params }: PageProps) {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
@@ -425,7 +463,7 @@ export default async function ServicePage({ params }: PageProps) {
                 {service.name} in Niagara Region, Ontario
               </h1>
               <p className="text-gray-300 text-xl mb-6">{service.shortDesc}</p>
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2 mb-6" data-track="service-hero">
                 {["Licensed & Insured Contractors", "Free Detailed Estimates", "5-Year Workmanship Warranty", "Serving All of Niagara Region"].map((item, i) => (
                   <li key={i} className="text-gray-300 text-sm flex items-center gap-2">
                     <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

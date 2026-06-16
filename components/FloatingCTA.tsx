@@ -24,6 +24,7 @@ export default function FloatingCTA() {
 
       <motion.a
         href="tel:6477979471"
+        data-track="floating-phone"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
         className="relative flex items-center gap-2.5 bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-3.5 px-5 rounded-full shadow-2xl amber-glow text-sm"

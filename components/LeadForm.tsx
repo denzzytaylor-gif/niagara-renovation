@@ -78,6 +78,34 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
           ))}
         </select>
 
+        {/* Budget Range */}
+        <select
+          name="budget"
+          className="w-full bg-gray-900 border border-white/10 focus:border-red-500 focus:outline-none rounded-xl px-4 py-3 text-sm transition-colors text-gray-300"
+        >
+          <option value="">Budget Range (optional)</option>
+          <option value="Under $10,000">Under $10,000</option>
+          <option value="$10,000 – $25,000">$10,000 – $25,000</option>
+          <option value="$25,000 – $50,000">$25,000 – $50,000</option>
+          <option value="$50,000 – $100,000">$50,000 – $100,000</option>
+          <option value="Over $100,000">Over $100,000</option>
+          <option value="Not sure yet">Not sure yet</option>
+        </select>
+
+        {/* Timeline */}
+        <select
+          name="timeline"
+          className="w-full bg-gray-900 border border-white/10 focus:border-red-500 focus:outline-none rounded-xl px-4 py-3 text-sm transition-colors text-gray-300"
+        >
+          <option value="">Preferred Timeline (optional)</option>
+          <option value="As soon as possible">As soon as possible</option>
+          <option value="Within 1–3 months">Within 1–3 months</option>
+          <option value="Within 3–6 months">Within 3–6 months</option>
+          <option value="Within 6–12 months">Within 6–12 months</option>
+          <option value="Planning for next year">Planning for next year</option>
+          <option value="Just exploring options">Just exploring options</option>
+        </select>
+
         {/* Message */}
         <textarea
           name="message"
@@ -90,6 +118,7 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
         {/* Submit */}
         <button
           type="submit"
+          data-track="form-submit"
           className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-black py-4 px-6 rounded-2xl transition-all text-base flex items-center justify-center gap-2 shadow-xl"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +134,7 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
       {/* Or call us */}
       <div className="mt-4 text-center">
         <p className="text-gray-500 text-xs mb-2">Or call us directly</p>
-        <a href="tel:6477979471" className="inline-flex items-center gap-2 text-red-400 font-black text-lg hover:text-red-300 transition-colors">
+        <a href="tel:6477979471" data-track="phone-click" className="inline-flex items-center gap-2 text-red-400 font-black text-lg hover:text-red-300 transition-colors">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
