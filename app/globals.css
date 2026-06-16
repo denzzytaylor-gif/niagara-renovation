@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-white text-gray-800 antialiased; }
+}
+
+/* SEO-safe scroll reveal: elements render fully visible in HTML, JS adds hidden state after hydration */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-red-500 to-red-400 bg-clip-text text-transparent;
+  }
+  .hero-pattern {
+    background-image: radial-gradient(circle at 20% 50%, rgba(220,38,38,0.08) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(220,38,38,0.05) 0%, transparent 40%);
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl;
+  }
+  .amber-glow {
+    box-shadow: 0 0 30px rgba(220,38,38,0.35);
+  }
+  .navy-dark-bg {
+    background: linear-gradient(135deg, #000000 0%, #0f0f0f 100%);
+  }
+}

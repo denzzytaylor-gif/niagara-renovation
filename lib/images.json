@@ -1,0 +1,68 @@
+{
+  "services": {
+    "kitchen-renovations": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80&auto=format",
+    "bathroom-renovations": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1400&q=80&auto=format",
+    "basement-finishing": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1400&q=80&auto=format",
+    "home-additions": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&auto=format",
+    "roofing": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&auto=format",
+    "flooring": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1400&q=80&auto=format",
+    "painting": "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1400&q=80&auto=format",
+    "windows-and-doors": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80&auto=format",
+    "general-contracting": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1400&q=80&auto=format",
+    "additions-adu": "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1400&q=80&auto=format",
+    "decks-outdoor": "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?w=1400&q=80&auto=format",
+    "commercial-renovations": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80&auto=format"
+  },
+  "home": {
+    "hero": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1800&q=80&auto=format",
+    "about_main": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=900&q=80&auto=format",
+    "about_small": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=300&q=80&auto=format",
+    "services_section": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "why_us_section": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&auto=format",
+    "cities_section": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&auto=format",
+    "testimonials_section": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80&auto=format",
+    "gallery_section": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1400&q=80&auto=format",
+    "faq_section": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "portfolio_kitchen": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80&auto=format",
+    "portfolio_bathroom": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80&auto=format",
+    "portfolio_basement": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80&auto=format",
+    "portfolio_addition": "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600&q=80&auto=format",
+    "portfolio_roofing": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&auto=format",
+    "portfolio_flooring": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80&auto=format"
+  },
+  "about": {
+    "hero": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&auto=format",
+    "our_story": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80&auto=format",
+    "why_local": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1400&q=80&auto=format",
+    "credentials": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1400&q=80&auto=format",
+    "core_values": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1400&q=80&auto=format",
+    "service_area": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1400&q=80&auto=format",
+    "contact_cta": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format"
+  },
+  "blog": {
+    "page_header": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "post_choose_contractor": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format",
+    "post_permits": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format",
+    "post_resale_value": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format",
+    "post_kitchen_timeline": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format",
+    "post_energy_efficient": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format",
+    "post_bathroom_checklist": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80&auto=format",
+    "post_kitchen_cost": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80&auto=format",
+    "post_bathroom_trends": "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80&auto=format",
+    "post_basement_guide": "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&q=80&auto=format"
+  },
+  "contact": {
+    "hero": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80&auto=format",
+    "get_in_touch": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "map_background": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format"
+  },
+  "services_page": {
+    "hero": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "all_services": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&auto=format",
+    "how_it_works": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format"
+  },
+  "city_pages": {
+    "why_choose": "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1400&q=80&auto=format",
+    "cta": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=80&auto=format"
+  }
+}
