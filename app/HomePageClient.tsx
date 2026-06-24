@@ -369,12 +369,16 @@ export default function HomePageClient() {
           />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { label: "Kitchen Renovation Project", img: IMAGES.home.portfolio_kitchen },
-              { label: "Bathroom Renovation Project", img: IMAGES.home.portfolio_bathroom },
-              { label: "Basement Finishing Project", img: IMAGES.home.portfolio_basement },
-              { label: "Home Addition Project", img: IMAGES.home.portfolio_addition },
-              { label: "Roofing Project", img: IMAGES.home.portfolio_roofing },
-              { label: "Flooring Installation Project", img: IMAGES.home.portfolio_flooring },
+              { label: "Bathroom Remodeling Services", img: "/images/bathroom%20remodeling%20services.png" },
+              { label: "Bathroom Remodeling", img: "/images/bathroom%20remodeling.png" },
+              { label: "Renovation Project Update", img: "/images/contractor-update.png" },
+              { label: "Professional Contractors", img: "/images/contractors.png" },
+              { label: "General Contractor Work", img: "/images/general%20contractor.png" },
+              { label: "General Contracting Services", img: "/images/general%20contractors.png" },
+              { label: "House Remodel", img: "/images/house-remodel.png" },
+              { label: "Laundry Room Remodeling", img: "/images/laundry%20room%20remodeling.png" },
+              { label: "Living Room Remodeling", img: "/images/living%20room%20remodeling.png" },
+              { label: "TV Room Contracting", img: "/images/tv%20room%20contracting.png" },
             ].map((item, i) => (
               <motion.div
                 key={i}
