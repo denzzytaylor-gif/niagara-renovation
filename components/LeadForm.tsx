@@ -3,6 +3,7 @@ import { SERVICES, CITIES } from "@/lib/data";
 
 const FORMSPREE_URL = "https://formspree.io/f/maqpllkj";
 const THANK_YOU_URL = "https://www.niagararenovationcompany.com/thank-you";
+const CRM_WEBHOOK_URL = "https://taylor-co-crm-production.up.railway.app/api/webhooks/formspree/niagara_renovation";
 
 interface LeadFormProps {
   defaultCity?: string;
@@ -10,6 +11,17 @@ interface LeadFormProps {
 }
 
 export default function LeadForm({ defaultCity, defaultService }: LeadFormProps) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    const payload = Object.fromEntries(new FormData(e.currentTarget).entries());
+    fetch(CRM_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).catch(() => {});
+    // No preventDefault — the native POST to Formspree (and its redirect) still happens as before.
+  }
+
   return (
     <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 p-6 shadow-2xl">
       {/* Header */}
@@ -21,6 +33,7 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
       <form
         action={FORMSPREE_URL}
         method="POST"
+        onSubmit={handleSubmit}
         className="space-y-3"
       >
         {/* Formspree redirect + subject */}
