@@ -55,7 +55,6 @@ export default async function CityPage({ params }: PageProps) {
     "telephone": "+16477979471",
     "email": "info@niagararenovationcompany.com",
     "areaServed": { "@type": "City", "name": city.name, "addressRegion": "ON", "addressCountry": "CA" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "87", "bestRating": "5" },
   };
 
   const faqSchema = {

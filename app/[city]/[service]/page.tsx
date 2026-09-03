@@ -244,12 +244,6 @@ export default async function CityServicePage({ params }: PageProps) {
         },
       }],
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "87",
-      "bestRating": "5",
-    },
   };
 
   const serviceSchema = {
@@ -286,7 +280,7 @@ export default async function CityServicePage({ params }: PageProps) {
   const trustSignals = [
     { title: "Licensed & Insured", desc: "Fully licensed Ontario contractor with comprehensive insurance." },
     { title: "Free Estimates", desc: "No cost, no obligation detailed written quotes." },
-    { title: "5-Star Rated", desc: "4.9/5 stars from 87+ verified reviews." },
+    { title: "5-Star Rated", desc: "4.9/5 stars from homeowners across Niagara Region." },
     { title: "5-Year Warranty", desc: "Comprehensive workmanship warranty on all projects." },
     { title: "On-Time Delivery", desc: "We commit to timelines and deliver on our promises." },
     { title: "Local Team", desc: "Your neighbours — proudly serving all of Niagara Region." },

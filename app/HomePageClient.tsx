@@ -64,7 +64,7 @@ export default function HomePageClient() {
               </p>
 
               <ul className="space-y-3 mb-10">
-                {["Licensed & Insured in Ontario", "Free Estimates – No Obligation", "500+ Projects Completed", "5-Year Workmanship Warranty"].map((item, i) => (
+                {["Licensed & Insured in Ontario", "Free Estimates – No Obligation", "Serving All 12 Niagara Municipalities", "5-Year Workmanship Warranty"].map((item, i) => (
                   <motion.li
                     key={i}
                     initial={{ x: -20 }}
@@ -122,7 +122,7 @@ export default function HomePageClient() {
                     <svg className="w-4 h-4 fill-red-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                     4.9/5 Rating
                   </div>
-                  <div className="text-gray-400 text-xs">87 verified reviews</div>
+                  <div className="text-gray-400 text-xs">Rated by Niagara homeowners</div>
                 </div>
               </div>
             </motion.div>
@@ -198,8 +198,8 @@ export default function HomePageClient() {
               </div>
               {/* Floating stat badge */}
               <div className="absolute -bottom-6 -right-4 bg-red-600 text-white rounded-2xl px-6 py-4 shadow-xl">
-                <div className="text-3xl font-black">500+</div>
-                <div className="text-sm font-semibold text-red-100">Projects Completed</div>
+                <div className="text-2xl font-black">Licensed</div>
+                <div className="text-sm font-semibold text-red-100">& Insured in Ontario</div>
               </div>
               {/* Second smaller photo */}
               <div className="absolute -top-6 -left-4 w-36 h-36 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden lg:block">
@@ -233,7 +233,7 @@ export default function HomePageClient() {
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
-                  { num: "500+", label: "Projects Completed" },
+                  { num: "Free", label: "No-Obligation Estimates" },
                   { num: "5-Year", label: "Workmanship Warranty" },
                   { num: "12", label: "Niagara Municipalities" },
                   { num: "4.9★", label: "Average Google Rating" },

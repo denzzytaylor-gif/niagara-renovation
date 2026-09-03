@@ -33,15 +33,7 @@ const stats: StatItem[] = [
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
       </svg>
     ),
-    stat: "4.9", suffix: "/5", label: "5-Star Rated", sublabel: "87+ verified reviews"
-  },
-  {
-    icon: (
-      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
-    stat: "500", suffix: "+", label: "Projects Completed", sublabel: "Across all of Niagara Region"
+    stat: "4.9", suffix: "/5", label: "5-Star Rated", sublabel: "Rated by Niagara homeowners"
   },
 ];
 
@@ -91,14 +83,14 @@ export default function TrustBar() {
       <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle, rgba(220,38,38,0.4) 1px, transparent 1px)", backgroundSize: "30px 30px" }} />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-y-2 divide-x-0 md:divide-y-0 md:divide-x md:divide-red-900/40">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 divide-y-2 divide-x-0 sm:divide-y-0 sm:divide-x sm:divide-red-900/40">
           {stats.map((item, i) => (
             <motion.div
               key={i}
               initial={{ y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col items-center text-center px-4 py-4 md:py-2 first:border-t-0 md:first:border-l-0"
+              className="flex flex-col items-center text-center px-4 py-4 sm:py-2 first:border-t-0 sm:first:border-l-0"
             >
               <div className="text-red-500 mb-2">
                 {item.icon}

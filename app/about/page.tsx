@@ -7,11 +7,11 @@ import IMAGES from "@/lib/images.json";
 
 export const metadata: Metadata = {
   title: "About Niagara Renovation Company | Niagara Region Renovation Experts",
-  description: "Learn about Niagara Renovation Company — Niagara Region's most trusted renovation contractor. Licensed, insured, 500+ projects completed, and committed to exceptional craftsmanship across all 12 Niagara municipalities.",
+  description: "Learn about Niagara Renovation Company — Niagara Region's most trusted renovation contractor. Licensed, insured, and committed to exceptional craftsmanship across all 12 Niagara municipalities.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/about" },
   openGraph: {
     title: "About Niagara Renovation Company | Niagara Region Renovation Experts",
-    description: "Niagara Region's most trusted home renovation contractor. Licensed, insured, 500+ completed projects across Niagara Falls, St. Catharines, Grimsby, and all 12 municipalities.",
+    description: "Niagara Region's most trusted home renovation contractor. Licensed and insured, serving Niagara Falls, St. Catharines, Grimsby, and all 12 municipalities.",
     url: "https://www.niagararenovationcompany.com/about",
     images: [{ url: IMAGES.about.hero, width: 1200, height: 630, alt: "Niagara Renovation Company team at work" }],
   },
@@ -58,7 +58,7 @@ export default function AboutPage() {
           />
           <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
             <p>
-              Niagara Renovation Company was founded by a third-generation tradesman with deep roots in the Niagara Region. What started as a small carpentry and general contracting operation has grown into one of the most respected full-service renovation companies in the region, with a team of 20+ skilled professionals and over 500 completed projects across every corner of Niagara.
+              Niagara Renovation Company was founded by a third-generation tradesman with deep roots in the Niagara Region. What started as a small carpentry and general contracting operation has grown into one of the most respected full-service renovation companies in the region, with a team of skilled professionals completing renovation projects across every corner of Niagara.
             </p>
             <p>
               From the very beginning, our philosophy has been simple: treat every client&apos;s home as if it were our own. That means using the best materials, employing the most skilled tradespeople, communicating openly and honestly, and never cutting corners — even when it might be easier or more profitable to do so. This philosophy has earned us a reputation for excellence that no advertising budget could buy.
