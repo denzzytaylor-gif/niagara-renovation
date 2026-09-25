@@ -6,6 +6,8 @@ import CTABanner from "@/components/CTABanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import SectionHeading from "@/components/SectionHeading";
 import { CITIES, SERVICES, PHONE, SERVICE_IMAGES } from "@/lib/data";
+import { serviceLocationTitle, serviceLocationDescription } from "@/lib/seo";
+import { RELATED_SERVICES, NEARBY_CITIES, SERVICE_ANCHORS, SERVICE_ARTICLES } from "@/lib/links";
 
 type CityServiceData = typeof CITIES[number];
 
@@ -25,20 +27,6 @@ export async function generateStaticParams() {
   }
   return params;
 }
-
-const cityServiceTitleSuffixes: Record<string, string> = {
-  "basement-finishing": "Finished Basement Contractor",
-  "kitchen-renovations": "Custom Kitchen Remodels",
-  "additions-adu": "Garden Suites & Legal Units",
-  "general-contracting": "Full Home Renovations",
-  "home-additions": "Add More Living Space",
-};
-
-const cityServiceTitlePrefixes: Record<string, string> = {
-  "basement-finishing": "Basement Renovations",
-  "additions-adu": "ADU Builder",
-  "general-contracting": "General Contractor",
-};
 
 const cityServiceBodyH2: Record<string, (city: string) => string> = {
   "basement-finishing": (city) => `Finished Basement Renovation Services in ${city}`,
@@ -96,36 +84,6 @@ const serviceKeyInclusions: Record<string, string[]> = {
   ],
 };
 
-const cityServiceRelatedLinks: Record<string, Array<{ href: string; label: string }>> = {
-  "basement-finishing": [
-    { href: "/services/additions-adu", label: "ADU Builds & Legal Suites" },
-    { href: "/services/bathroom-renovations", label: "Bathroom Renovations" },
-    { href: "/services/flooring", label: "Flooring" },
-    { href: "/services/general-contracting", label: "General Contracting" },
-  ],
-  "kitchen-renovations": [
-    { href: "/services/general-contracting", label: "Full Home Renovations" },
-    { href: "/services/flooring", label: "Flooring" },
-    { href: "/services/bathroom-renovations", label: "Bathroom Renovations" },
-  ],
-  "additions-adu": [
-    { href: "/services/basement-finishing", label: "Basement Renovations" },
-    { href: "/services/home-additions", label: "Home Additions" },
-    { href: "/services/general-contracting", label: "General Contracting" },
-  ],
-  "general-contracting": [
-    { href: "/services/basement-finishing", label: "Basement Renovations" },
-    { href: "/services/kitchen-renovations", label: "Kitchen Renovations" },
-    { href: "/services/additions-adu", label: "ADU Builds" },
-    { href: "/services/home-additions", label: "Home Additions" },
-  ],
-  "home-additions": [
-    { href: "/services/additions-adu", label: "ADU Builds & Garden Suites" },
-    { href: "/services/general-contracting", label: "General Contracting" },
-    { href: "/services/kitchen-renovations", label: "Kitchen Renovations" },
-  ],
-};
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { city: citySlug, service: serviceSlug } = await params;
   const city = CITIES.find(c => c.slug === citySlug);
@@ -133,12 +91,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!city || !service) return { title: "Not Found" };
 
   const image = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
-  const prefix = cityServiceTitlePrefixes[service.slug] ?? service.name;
-  const suffix = cityServiceTitleSuffixes[service.slug];
-  const title = suffix
-    ? `${prefix} in ${city.name} | ${suffix}`
-    : `${service.name} in ${city.name}, Ontario`;
-  const description = `Expert ${service.name.toLowerCase()} in ${city.name}, Ontario. Licensed & insured local contractors. Free estimates. Call (647) 797-9471.`;
+  const title = serviceLocationTitle(service.slug, service.name, city.name);
+  const description = serviceLocationDescription(service.slug, service.name, city.name);
 
   return {
     title,
@@ -167,7 +121,13 @@ const serviceBodyTemplates: Record<string, (city: string, landmark: string, neig
     `Complex renovation projects require more than skilled tradespeople — they require a general contractor with the organizational expertise, project management capability, and multi-trade coordination experience to keep every moving piece on schedule, on budget, and on spec. Niagara Renovation Company's general contracting division serves ${city} homeowners and commercial clients who need a single, accountable professional to manage entire renovation projects from initial design through final inspection.\n\nAs a full-service general contractor operating throughout ${city} ${landmark}, we take complete ownership of your renovation project. We source and vet all sub-trades, coordinate delivery schedules for long-lead materials, manage the permit and inspection process with local building departments, and maintain consistent communication with you throughout the build. For homeowners in areas like ${neigh} undertaking large-scale renovations, our general contracting service eliminates the single biggest source of renovation stress: managing multiple contractors who each care only about their own scope.\n\nOur general contracting service is the right fit for projects that involve multiple trades working in sequence — such as full home renovations, gut renovations of kitchens and bathrooms simultaneously, home additions that require structural engineering, or commercial tenant improvements with tight lease-start deadlines. We have established relationships with licensed and vetted electricians, plumbers, HVAC technicians, tile setters, cabinetmakers, and finish carpenters throughout Niagara Region, allowing us to assemble the right team for your specific project.\n\nEvery general contracting engagement begins with a thorough scope discussion, followed by a detailed written contract that specifies the full scope of work, materials, payment schedule, timeline, and change-order process. There are no surprises mid-project and no disputes at the end. Our 5-year workmanship warranty covers all work we manage. For general contracting in ${city}, call (647) 797-9471 or fill out the form above to discuss your project with our team.`,
 
   "additions-adu": (city, landmark, neigh) =>
-    `A home addition or accessory dwelling unit (ADU) is one of the most significant renovation investments a ${city} homeowner can make — and also one of the most rewarding. Whether you need to add a main-floor primary bedroom suite, build a two-storey rear addition to accommodate a growing family, or construct a fully self-contained garden suite or in-law apartment, Niagara Renovation Company has the design expertise, construction experience, and permit knowledge to deliver your ${city} addition on time and to the highest standard.\n\nHome additions in ${city} ${landmark} require a contractor with deep familiarity with local zoning bylaws, setback requirements, and building permit processes. Properties across areas like ${neigh} have varying lot configurations and municipal regulations that directly affect what can be built and how. Our team has navigated the local approval process for dozens of addition projects throughout Niagara Region, and we handle all permit applications, structural engineering coordination, and inspections on your behalf — saving you months of frustration.\n\nOur additions and ADU service covers the full scope of the project from concept to completion: site assessment and design consultation, structural engineering and permit drawings, foundation work (if required), framing, insulation, windows and exterior cladding, roofing tie-in, drywall, flooring, cabinetry, plumbing, electrical, and all interior and exterior finishing. For garden suites and secondary units, we also handle the lot grading, utility connections, and separate entrance construction. We work with architects and designers as required to ensure your addition integrates seamlessly with your existing home's architectural character.\n\nThe investment in a quality addition or ADU consistently delivers strong returns in Niagara Region's real estate market — adding liveable square footage, increasing appraisal value, and in the case of rental units, generating long-term income. Contact us at (647) 797-9471 or fill out the form above to start planning your ${city} home addition today.`,
+    `An accessory dwelling unit (ADU) is one of the most practical ways for a ${city} homeowner to add a second, self-contained home to an existing lot — a detached garden suite in the backyard, a converted garage, a coach house above a garage, or a legal secondary suite in the basement. Ontario's Planning Act now permits additional residential units on most residential lots, and Niagara Renovation Company designs and builds ADUs in ${city} from the first zoning review through to occupancy.
+
+Every ADU project in ${city} ${landmark} starts with the property itself. Lot size, setbacks, lot coverage, servicing, and access all shape what can be built, and properties across areas like ${neigh} vary considerably. Before you commit to anything, we review your lot against the municipality's current rules for additional residential units and tell you plainly which options are realistic — a detached garden suite, a garage conversion, or a secondary suite inside the existing house.
+
+Our ADU service covers the full scope: design and permit drawings, building permit applications, foundations for detached suites, framing, insulation and exterior cladding, separate electrical service where required, water and sewer connections, a full kitchen and bathroom, a separate entrance, the fire separation and egress a secondary suite requires, and complete interior finishing to move-in ready condition.
+
+Homeowners build ADUs for different reasons — rental income to help offset a mortgage, a place for aging parents or adult children to live independently nearby, or long-term flexibility and property value. If what you need is more space attached to your own living area rather than a separate unit, our home additions service is the better fit. To find out what your ${city} property allows, call (647) 797-9471 or fill out the form above.`,
 
   "decks-outdoor": (city, landmark, neigh) =>
     `Niagara Region's exceptional summers make outdoor living one of the most rewarding home improvement investments you can make — and for ${city} homeowners, a professionally designed and built deck or outdoor living space transforms your property and your lifestyle. Niagara Renovation Company designs and builds custom decks, pergolas, covered patios, and complete outdoor living spaces throughout ${city} and all of Niagara Region, bringing the same quality craftsmanship and attention to detail to outdoor projects as we do to every interior renovation we complete.\n\nOutdoor projects in ${city} ${landmark} require materials and construction techniques that stand up to Niagara's full range of seasonal conditions — from humid summers to freeze-thaw cycling in winter. Our deck and outdoor living projects are engineered and built for longevity, using pressure-treated lumber, composite decking (Trex, Fiberon, TimberTech), stainless steel fasteners, and proper drainage detailing that prevents the premature deterioration common in decks built with inferior materials or methods. Homeowners in areas like ${neigh} have trusted us to build outdoor structures that still look and perform beautifully a decade after installation.\n\nOur complete outdoor living service includes custom deck design and construction, pergola and covered structure fabrication and installation, stone and concrete patio construction, outdoor kitchen rough-in and installation, privacy screening and railing systems (glass, cable, aluminum, wood), and exterior lighting. We handle all building permit applications — in Ontario, any deck over 600mm above grade requires a permit, and we manage this process entirely on your behalf.\n\nA beautiful outdoor space is an extension of your interior living area, and we design every project to feel integrated with your home's architecture and your family's lifestyle. Whether you want a simple pressure-treated deck for weekend barbecues, a multi-level composite deck with built-in lighting and a hot tub pad, or a full outdoor kitchen and entertainment area, we have the expertise to deliver it. Contact us at (647) 797-9471 or fill out the form above for your free ${city} outdoor living consultation.`,
@@ -206,6 +166,15 @@ export default async function CityServicePage({ params }: PageProps) {
 
   const bodyCopy = getBodyCopy(service.name, service.slug, city.name, city.landmark, (city as CityServiceData).neighbourhoods ?? []);
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
+  const pageDescription = serviceLocationDescription(service.slug, service.name, city.name);
+
+  const relatedServices = (RELATED_SERVICES[service.slug] ?? [])
+    .map(slug => SERVICES.find(s => s.slug === slug))
+    .filter((s): s is typeof SERVICES[number] => Boolean(s));
+  const nearbyCities = (NEARBY_CITIES[city.slug] ?? [])
+    .map(slug => CITIES.find(c => c.slug === slug))
+    .filter((c): c is typeof CITIES[number] => Boolean(c));
+  const articles = SERVICE_ARTICLES[service.slug] ?? [];
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -221,7 +190,7 @@ export default async function CityServicePage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": `Niagara Renovation Company – ${service.name} in ${city.name}`,
-    "description": `Expert ${service.name.toLowerCase()} in ${city.name}, Ontario. Licensed & insured local contractors. Free estimates. Call (647) 797-9471.`,
+    "description": pageDescription,
     "url": `https://www.niagararenovationcompany.com/${city.slug}/${service.slug}`,
     "telephone": "+16477979471",
     "email": "info@niagararenovationcompany.com",
@@ -250,7 +219,7 @@ export default async function CityServicePage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": `${service.name} in ${city.name}`,
-    "description": `Expert ${service.name.toLowerCase()} in ${city.name}, Ontario. Licensed & insured. Free estimates.`,
+    "description": pageDescription,
     "provider": {
       "@type": "HomeAndConstructionBusiness",
       "name": "Niagara Renovation Company",
@@ -437,6 +406,55 @@ export default async function CityServicePage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* RELATED LOCAL SERVICES, NEARBY COMMUNITIES, SUPPORTING ARTICLES */}
+      <section className="py-14 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-gray-900 mb-4">Planning More Work in {city.name}?</h2>
+          {relatedServices.length > 0 && (
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              Many {city.name} projects involve more than one trade. Alongside {service.name.toLowerCase()}, we also handle{" "}
+              {relatedServices.map((s, i) => (
+                <span key={s.slug}>
+                  {i > 0 && (i === relatedServices.length - 1 ? " and " : ", ")}
+                  <Link href={`/${city.slug}/${s.slug}`} className="text-red-600 font-medium hover:underline">
+                    {SERVICE_ANCHORS[s.slug] ?? s.name.toLowerCase()}
+                  </Link>
+                </span>
+              ))}
+              {" "}in {city.name}, so related work can be planned and scheduled under one contract.
+            </p>
+          )}
+          {nearbyCities.length > 0 && (
+            <p className="text-gray-700 text-lg leading-relaxed mb-4">
+              We also provide {SERVICE_ANCHORS[service.slug] ?? service.name.toLowerCase()} in neighbouring{" "}
+              {nearbyCities.map((c, i) => (
+                <span key={c.slug}>
+                  {i > 0 && (i === nearbyCities.length - 1 ? " and " : ", ")}
+                  <Link href={`/${c.slug}/${service.slug}`} className="text-red-600 font-medium hover:underline">
+                    {c.name}
+                  </Link>
+                </span>
+              ))}
+              .
+            </p>
+          )}
+          {articles.length > 0 && (
+            <div className="bg-gray-50 border border-gray-200 rounded-xl p-5">
+              <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide mb-3">Helpful Reading</h3>
+              <ul className="space-y-2">
+                {articles.map(a => (
+                  <li key={a.slug}>
+                    <Link href={`/blog/${a.slug}`} className="text-red-600 font-medium hover:underline">
+                      {a.anchor}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+
       {/* INTERNAL LINKS */}
       <section className="py-10 bg-white border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -453,20 +471,6 @@ export default async function CityServicePage({ params }: PageProps) {
               Get a Free Quote &rarr;
             </Link>
           </div>
-          {cityServiceRelatedLinks[service.slug] && (
-            <div className="flex flex-wrap justify-center gap-2 mt-3">
-              <span className="text-xs text-gray-400 w-full text-center mb-1">Related services:</span>
-              {cityServiceRelatedLinks[service.slug].map((link, i) => (
-                <Link
-                  key={i}
-                  href={link.href}
-                  className="text-xs text-gray-600 hover:text-red-600 border border-gray-200 px-3 py-1.5 rounded-lg hover:border-red-300 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          )}
         </div>
       </section>
 

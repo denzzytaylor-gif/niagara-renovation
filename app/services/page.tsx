@@ -6,8 +6,8 @@ import CTABanner from "@/components/CTABanner";
 import SectionHeading from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
-  title: "Home Renovation Services in Niagara Region, Ontario | Free Estimates",
-  description: "Complete home renovation services in Niagara Region. Kitchen, bathroom, basement, roofing, flooring, painting, windows & doors, and home additions. Free estimates. Licensed & insured.",
+  title: "Renovation Services in Niagara Region",
+  description: "Renovation services across Niagara Region: kitchens, basements, ADUs, additions, bathrooms, roofing, flooring and more. Licensed, insured, free estimates.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/services" },
   openGraph: {
     title: "Home Renovation Services in Niagara Region, Ontario | Free Estimates",

@@ -5,7 +5,7 @@ import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
   title: "Our Service Area – Niagara Region, Ontario",
-  description: "Niagara Renovation Company serves all 12 municipalities in Niagara Region, Ontario. View our complete service area including St. Catharines, Niagara Falls, Welland, Grimsby & more.",
+  description: "We serve all 12 Niagara Region municipalities, including St. Catharines, Niagara Falls, Welland, Grimsby and Niagara-on-the-Lake. Free estimates.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/service-area" },
   openGraph: {
     title: "Our Service Area – Niagara Region, Ontario | Niagara Renovation Company",

@@ -7,7 +7,7 @@ export const YEAR_FOUNDED = 2008;
 export const SERVICES = [
   { slug: "basement-finishing", name: "Basement Renovations", icon: "basement", shortDesc: "Finished basements, legal suites, in-law apartments, and rec rooms built to code." },
   { slug: "kitchen-renovations", name: "Kitchen Renovations", icon: "kitchen", shortDesc: "Transform your kitchen with custom cabinetry, countertops, and modern layouts." },
-  { slug: "additions-adu", name: "ADU Builds & Additions", icon: "adu", shortDesc: "Garden suites, garage conversions, legal basement suites, and home additions." },
+  { slug: "additions-adu", name: "ADUs & Garden Suites", icon: "adu", shortDesc: "Garden suites, garage conversions, coach houses, and legal secondary suites." },
   { slug: "general-contracting", name: "General Contracting", icon: "contracting", shortDesc: "Full-service general contracting for complex multi-trade renovation projects." },
   { slug: "home-additions", name: "Home Additions", icon: "addition", shortDesc: "Add square footage with expertly built room additions, second storeys, and sunrooms." },
   { slug: "bathroom-renovations", name: "Bathroom Renovations", icon: "bathroom", shortDesc: "Luxury bathroom upgrades from walk-in showers to full suite transformations." },

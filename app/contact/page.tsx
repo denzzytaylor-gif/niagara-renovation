@@ -5,8 +5,8 @@ import SectionHeading from "@/components/SectionHeading";
 import { PHONE, EMAIL, ADDRESS } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Contact Niagara Renovation Company | Get a Free Quote",
-  description: "Contact Niagara Renovation Company for a free estimate on your renovation project. Call (647) 797-9471, email us, or fill out our online form. Fast response guaranteed.",
+  title: "Contact Us for a Free Renovation Quote",
+  description: "Request a free renovation estimate from Niagara Renovation Company. Call (647) 797-9471, email us, or send your project details online.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/contact" },
   openGraph: {
     title: "Contact Niagara Renovation Company | Get a Free Quote",

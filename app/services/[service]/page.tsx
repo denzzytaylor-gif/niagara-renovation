@@ -6,7 +6,8 @@ import Breadcrumb from "@/components/Breadcrumb";
 import CityGrid from "@/components/CityGrid";
 import SectionHeading from "@/components/SectionHeading";
 import Link from "next/link";
-import { SERVICES, TESTIMONIALS, SERVICE_IMAGES } from "@/lib/data";
+import { SERVICES, CITIES, TESTIMONIALS, SERVICE_IMAGES } from "@/lib/data";
+import { serviceLocationTitle, serviceLocationDescription } from "@/lib/seo";
 import IMAGES from "@/lib/images.json";
 
 export const dynamic = "force-static";
@@ -88,7 +89,7 @@ const serviceDetails: Record<string, {
     ],
   },
   "home-additions": {
-    intro: "When your family has outgrown your home, a well-planned addition is the best way to gain the space you need without the disruption and cost of moving. Niagara Renovation Company designs and builds home additions throughout Niagara Region — main floor extensions, second-storey additions, sunrooms, garage conversions, and in-law suites — built to integrate seamlessly with your existing home.\n\nOur team of architects, engineers, and skilled tradespeople works with you from initial design through to the final coat of paint, matching rooflines, exterior cladding, trim details, and interior finishes so the addition looks like it was always part of the home. We handle all permit applications, structural engineering coordination, and required inspections on your behalf — you never need to deal with the building department yourself.\n\nOur home addition service is truly full-service: site feasibility, architectural design, foundation and structural work, framing, insulation, roofing, windows and exterior cladding, electrical, plumbing, drywall, flooring, cabinetry, and all interior finishing. A quality addition built by licensed, insured contractors with proper permits is a permanent, insurable improvement reflected in your property's appraised value. Contact us at (647) 797-9471 or fill out the form above to start planning your addition today.",
+    intro: "When your family has outgrown your home, a well-planned addition is the best way to gain the space you need without the disruption and cost of moving. Niagara Renovation Company designs and builds home additions throughout Niagara Region — main floor extensions, second-storey additions, sunrooms, and enlarged kitchens or primary suites — built to integrate seamlessly with your existing home.\n\nOur team of architects, engineers, and skilled tradespeople works with you from initial design through to the final coat of paint, matching rooflines, exterior cladding, trim details, and interior finishes so the addition looks like it was always part of the home. We handle all permit applications, structural engineering coordination, and required inspections on your behalf — you never need to deal with the building department yourself.\n\nOur home addition service is truly full-service: site feasibility, architectural design, foundation and structural work, framing, insulation, roofing, windows and exterior cladding, electrical, plumbing, drywall, flooring, cabinetry, and all interior finishing. A quality addition built by licensed, insured contractors with proper permits is a permanent, insurable improvement reflected in your property's appraised value. Contact us at (647) 797-9471 or fill out the form above to start planning your addition today.",
     included: [
       "Architectural design and engineering",
       "Building permit applications and management",
@@ -269,26 +270,22 @@ const serviceDetails: Record<string, {
   },
 };
 
-const serviceSEO: Record<string, { title: string; description: string }> = {
+// Hand-written regional descriptions; other services use the service-family template in lib/seo.ts.
+const serviceSEO: Record<string, { description: string }> = {
   "basement-finishing": {
-    title: "Basement Renovations in Niagara Region | Finished Basements & Legal Suites",
-    description: "Basement renovations in Niagara Region for finished basements, legal suites, in-law apartments and living space upgrades. Licensed contractor. Request a quote today.",
+    description: "Basement renovations in Niagara Region for finished basements, legal suites, in-law apartments and extra living space. Licensed contractor. Request a quote.",
   },
   "kitchen-renovations": {
-    title: "Kitchen Renovations in Niagara Region | Custom Kitchen Remodels",
     description: "Kitchen renovations in Niagara Region with custom layouts, cabinetry, countertops, flooring and full project management. Licensed contractor. Request a quote.",
   },
   "additions-adu": {
-    title: "ADU Builder in Niagara Region | Garden Suites & Legal Units",
     description: "ADU builder in Niagara Region for garden suites, garage conversions, legal basement suites and accessory dwelling units. Request a property assessment today.",
   },
   "general-contracting": {
-    title: "General Contractor in Niagara Region | Full Home Renovations",
-    description: "General contractor in Niagara Region for full home renovations, additions, kitchens, basements and multi-trade projects. Licensed & insured. Request a quote.",
+    description: "General contractor in Niagara Region for full home renovations, additions, kitchens, basements and multi-trade projects. Licensed and insured.",
   },
   "home-additions": {
-    title: "Home Additions in Niagara Region | Add More Living Space",
-    description: "Home additions in Niagara Region for room extensions, second storeys, sunrooms and garage conversions. Licensed contractor. Request a quote today.",
+    description: "Home additions in Niagara Region: rear extensions, second-storey additions and sunrooms built to match your existing house. Licensed contractor.",
   },
 };
 
@@ -342,8 +339,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const image = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
   const seo = serviceSEO[service.slug];
 
-  const title = seo?.title ?? `${service.name} in Niagara Region, ON`;
-  const description = seo?.description ?? `Expert ${service.name.toLowerCase()} in Niagara Region, Ontario. Licensed & insured contractors. Free estimates. Call (647) 797-9471.`;
+  const title = serviceLocationTitle(service.slug, service.name, "Niagara Region");
+  const description = seo?.description ?? serviceLocationDescription(service.slug, service.name, "Niagara Region");
 
   return {
     title,
@@ -367,6 +364,17 @@ export default async function ServicePage({ params }: PageProps) {
   const testimonial = TESTIMONIALS.find(t => t.service === service.name) || TESTIMONIALS[0];
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
 
+  // Contextual link from the regional hub down to the matching city + service page.
+  const cityLink = (citySlug: string) => {
+    const city = CITIES.find(c => c.slug === citySlug);
+    if (!city) return null;
+    return (
+      <Link href={`/${city.slug}/${service.slug}`} className="text-red-600 font-medium hover:underline">
+        {city.name}
+      </Link>
+    );
+  };
+
   const serviceTypeMap: Record<string, string> = {
     "basement-finishing": "Basement Renovation",
     "kitchen-renovations": "Kitchen Renovation",
@@ -387,7 +395,7 @@ export default async function ServicePage({ params }: PageProps) {
     "@type": "Service",
     "name": service.name,
     "serviceType": serviceTypeMap[service.slug] ?? service.name,
-    "description": serviceSEO[service.slug]?.description ?? service.shortDesc,
+    "description": serviceSEO[service.slug]?.description ?? serviceLocationDescription(service.slug, service.name, "Niagara Region"),
     "provider": {
       "@type": "HomeAndConstructionBusiness",
       "name": "Niagara Renovation Company",
@@ -493,7 +501,7 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 mb-5">{serviceNiagaraH2[service.slug] ?? `${service.name} Services in Niagara Region`}</h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
-            Niagara Renovation Company has completed {service.name.toLowerCase()} projects in every corner of Niagara Region — from the urban neighbourhoods of St. Catharines and Niagara Falls to the wine country estates of Lincoln, the waterfront communities of Port Colborne and Fort Erie, and the growing suburbs of Grimsby and Pelham. Our deep familiarity with local building departments, permit processes, and regional building inspectors means your project moves forward without unnecessary delays.
+            Niagara Renovation Company has completed {service.name.toLowerCase()} projects in every corner of Niagara Region — from the urban neighbourhoods of {cityLink("st-catharines")} and {cityLink("niagara-falls")} to the wine country estates of {cityLink("lincoln")}, the waterfront communities of {cityLink("port-colborne")} and {cityLink("fort-erie")}, and the growing suburbs of {cityLink("grimsby")} and {cityLink("pelham")}. Our deep familiarity with local building departments, permit processes, and regional building inspectors means your project moves forward without unnecessary delays.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
             We understand that Niagara homes come in every style and era — from century-old heritage properties that require sensitive, skilled renovation to modern builds that demand precision and contemporary design expertise. Our team includes tradespeople who have spent decades working specifically in this region, giving us a level of local knowledge that out-of-region contractors simply cannot match. We know the materials that perform best in Niagara&apos;s climate, the suppliers who stock them, and the techniques that deliver lasting results in local conditions.

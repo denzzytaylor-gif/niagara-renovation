@@ -4,8 +4,8 @@ import BlogCard from "@/components/BlogCard";
 import CTABanner from "@/components/CTABanner";
 
 export const metadata: Metadata = {
-  title: "Renovation Tips & Guides for Niagara Homeowners | Blog",
-  description: "Expert renovation tips, cost guides, permit advice, and home improvement inspiration for Niagara Region homeowners. Trusted advice from licensed Niagara contractors.",
+  title: "Renovation Tips & Guides for Niagara Homeowners",
+  description: "Renovation guides for Niagara Region homeowners: costs, timelines, permits, planning checklists and design trends from a licensed local contractor.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/blog" },
   openGraph: {
     title: "Renovation Tips & Guides for Niagara Homeowners | Niagara Renovation Company Blog",

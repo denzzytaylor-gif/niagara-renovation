@@ -7,6 +7,7 @@ import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
 import { CITIES, SERVICES, TESTIMONIALS, PHONE } from "@/lib/data";
 import IMAGES from "@/lib/images.json";
+import { cityHubDescription } from "@/lib/seo";
 
 type CityData = typeof CITIES[number];
 
@@ -27,8 +28,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!city) return { title: "City Not Found" };
 
   return {
-    title: `Home Renovations in ${city.name}, Ontario`,
-    description: `Expert home renovations in ${city.name}, Ontario. Kitchen, bathroom, basement & more. Licensed & insured local contractors. Free estimates. Call (647) 797-9471.`,
+    title: `Home Renovations ${city.name}`,
+    description: cityHubDescription(city.name),
     alternates: { canonical: `https://www.niagararenovationcompany.com/${city.slug}` },
     openGraph: {
       title: `Home Renovations in ${city.name}, Ontario | Niagara Renovation Company`,
@@ -120,7 +121,13 @@ export default async function CityPage({ params }: PageProps) {
             {(city as CityData).cityDesc}
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
-            Whether you&apos;re planning a complete kitchen transformation, a luxurious bathroom upgrade, a finished basement, or a major home addition, our experienced {city.name}-area renovation team delivers results that exceed expectations — on schedule and within budget. We&apos;re not just contractors; we&apos;re neighbours who take pride in making {city.name} homes more beautiful and functional, one project at a time.
+            Whether you&apos;re planning a complete{" "}
+            <Link href={`/${city.slug}/kitchen-renovations`} className="text-red-600 font-medium hover:underline">kitchen renovation</Link>, a luxurious bathroom upgrade, a{" "}
+            <Link href={`/${city.slug}/basement-finishing`} className="text-red-600 font-medium hover:underline">finished basement or legal suite</Link>, a{" "}
+            <Link href={`/${city.slug}/additions-adu`} className="text-red-600 font-medium hover:underline">garden suite or ADU</Link>, or a major{" "}
+            <Link href={`/${city.slug}/home-additions`} className="text-red-600 font-medium hover:underline">home addition</Link>, our experienced {city.name}-area renovation team delivers results that exceed expectations — on schedule and within budget. For whole-home projects, our{" "}
+            <Link href={`/${city.slug}/general-contracting`} className="text-red-600 font-medium hover:underline">general contracting service</Link>{" "}
+            manages every trade under one contract. We&apos;re not just contractors; we&apos;re neighbours who take pride in making {city.name} homes more beautiful and functional, one project at a time.
           </p>
         </div>
       </section>

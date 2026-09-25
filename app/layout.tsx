@@ -13,10 +13,9 @@ export const metadata: Metadata = {
   description: "Niagara Region's most trusted home renovation contractors. Kitchen, bathroom, basement, roofing & more. Free estimates. Licensed & insured. Call (647) 797-9471.",
   icons: {
     icon: [
-      { url: "/images/Niagara%20Renovation%20Company.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
     ],
-    shortcut: "/images/Niagara%20Renovation%20Company.png",
-    apple: "/images/Niagara%20Renovation%20Company.png",
+    apple: [{ url: "/images/logo-180.png", sizes: "180x180" }],
   },
   openGraph: { type: "website", locale: "en_CA", siteName: "Niagara Renovation Company" },
   twitter: {
@@ -34,7 +33,7 @@ const organizationSchema = {
   "url": "https://www.niagararenovationcompany.com",
   "logo": {
     "@type": "ImageObject",
-    "url": "https://www.niagararenovationcompany.com/images/Niagara%20Renovation%20Company.png",
+    "url": "https://www.niagararenovationcompany.com/images/logo-512.png",
     "width": 512,
     "height": 512,
   },

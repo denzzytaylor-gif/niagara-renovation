@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PHONE, EMAIL } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Thank You | Niagara Renovation Company",
+  title: "Thank You",
   description: "Thank you for contacting Niagara Renovation Company. We'll be in touch within 24 hours.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/thank-you" },
   robots: { index: false, follow: false },

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Niagara Renovation Company",
+  title: "Privacy Policy",
   description: "Privacy Policy for Niagara Renovation Company. Learn how we collect, use, and protect your personal information.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/privacy-policy" },
   robots: { index: true, follow: true },

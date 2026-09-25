@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { TESTIMONIALS } from "@/lib/data";
 
 export default function TestimonialsCarousel() {
@@ -31,11 +31,15 @@ export default function TestimonialsCarousel() {
     return () => clearInterval(timer);
   }, [next]);
 
-  const slideVariants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 80 : -80, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -80 : 80, opacity: 0 }),
-  };
+  // Below md only the centre card is shown and it can be swiped.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const getVisibleIndices = () => {
     const p = (current - 1 + total) % total;
@@ -47,45 +51,29 @@ export default function TestimonialsCarousel() {
 
   return (
     <div className="w-full">
-      {/* Mobile: single card with slide */}
-      <div className="block md:hidden">
-        <div className="relative overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
+      {/* Each testimonial is rendered once: 3 cards on desktop, centre card only on mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 overflow-hidden md:overflow-visible">
+        {visibleIndices.map((idx, position) => {
+          const isCenter = position === 1;
+          return (
             <motion.div
-              key={current}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              drag="x"
+              key={idx}
+              initial={isMobile ? { x: direction > 0 ? 80 : -80, opacity: 0 } : { y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.4, delay: isMobile ? 0 : position * 0.08 }}
+              drag={isMobile && isCenter ? "x" : false}
               dragConstraints={{ left: 0, right: 0 }}
               dragElastic={0.2}
               onDragEnd={(_, info) => {
                 if (info.offset.x < -50) next();
                 else if (info.offset.x > 50) prev();
               }}
+              className={`${isCenter ? "md:scale-105" : "hidden md:block scale-100 opacity-80"} transition-all duration-300`}
             >
-              <TestimonialCard testimonial={TESTIMONIALS[current]} isActive />
+              <TestimonialCard testimonial={TESTIMONIALS[idx]} isActive={isCenter} />
             </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      {/* Desktop: 3 cards */}
-      <div className="hidden md:grid grid-cols-3 gap-6">
-        {visibleIndices.map((idx, position) => (
-          <motion.div
-            key={idx}
-            initial={{ y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: position * 0.08 }}
-            className={`transition-all duration-300 ${position === 1 ? "scale-105" : "scale-100 opacity-80"}`}
-          >
-            <TestimonialCard testimonial={TESTIMONIALS[idx]} isActive={position === 1} />
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Controls */}

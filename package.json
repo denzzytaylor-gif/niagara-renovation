@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/generate-sitemap.js",
     "verify": "node scripts/verify-site.js"
   },
   "dependencies": {
@@ -14,7 +14,6 @@
     "autoprefixer": "^10.4.27",
     "framer-motion": "^11.0.0",
     "next": "^15.2.3",
-    "next-sitemap": "^4.2.3",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
     "react-hook-form": "^7.52.0",

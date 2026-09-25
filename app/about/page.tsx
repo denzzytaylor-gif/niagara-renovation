@@ -6,11 +6,11 @@ import { PHONE, EMAIL, ADDRESS, CITIES, SERVICES } from "@/lib/data";
 import IMAGES from "@/lib/images.json";
 
 export const metadata: Metadata = {
-  title: "About Niagara Renovation Company | Niagara Region Renovation Experts",
-  description: "Learn about Niagara Renovation Company — Niagara Region's most trusted renovation contractor. Licensed, insured, and committed to exceptional craftsmanship across all 12 Niagara municipalities.",
+  title: { absolute: "About Niagara Renovation Company | Niagara Region Contractor" },
+  description: "Meet Niagara Renovation Company: a licensed, insured renovation contractor serving homeowners across all 12 Niagara Region municipalities.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/about" },
   openGraph: {
-    title: "About Niagara Renovation Company | Niagara Region Renovation Experts",
+    title: "About Niagara Renovation Company | Niagara Region Contractor",
     description: "Niagara Region's most trusted home renovation contractor. Licensed and insured, serving Niagara Falls, St. Catharines, Grimsby, and all 12 municipalities.",
     url: "https://www.niagararenovationcompany.com/about",
     images: [{ url: IMAGES.about.hero, width: 1200, height: 630, alt: "Niagara Renovation Company team at work" }],
