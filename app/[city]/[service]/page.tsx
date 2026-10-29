@@ -249,7 +249,7 @@ export default async function CityServicePage({ params }: PageProps) {
   const trustSignals = [
     { title: "Licensed & Insured", desc: "Fully licensed Ontario contractor with comprehensive insurance." },
     { title: "Free Estimates", desc: "No cost, no obligation detailed written quotes." },
-    { title: "5-Star Rated", desc: "4.9/5 stars from homeowners across Niagara Region." },
+    { title: "One Contractor", desc: "Every trade on your project managed by a single point of contact." },
     { title: "5-Year Warranty", desc: "Comprehensive workmanship warranty on all projects." },
     { title: "On-Time Delivery", desc: "We commit to timelines and deliver on our promises." },
     { title: "Local Team", desc: "Your neighbours — proudly serving all of Niagara Region." },
