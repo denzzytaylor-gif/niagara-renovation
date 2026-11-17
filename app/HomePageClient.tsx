@@ -54,9 +54,9 @@ export default function HomePageClient() {
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tight">
                 Niagara Region{" "}
-                <span className="text-gradient">General</span>
-                <br />Contractor for
-                <br />Renovations
+                <span className="text-gradient">Home</span>
+                <br />Renovation
+                <br />Contractor
               </h1>
 
               <p className="text-gray-300 text-xl mb-8 leading-relaxed max-w-lg">
