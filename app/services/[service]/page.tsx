@@ -500,7 +500,15 @@ export default async function ServicePage({ params }: PageProps) {
       {/* INTRO */}
       <section className="py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gray-700 text-lg leading-relaxed">{details.intro}</p>
+          {/* Intros may contain paragraph breaks ("\n\n"); render each paragraph separately.
+              Single-paragraph intros keep the original single <p>. */}
+          {details.intro.includes("\n\n") ? (
+            details.intro.split("\n\n").filter(p => p.trim()).map((paragraph, i, all) => (
+              <p key={i} className={i < all.length - 1 ? "text-gray-700 text-lg leading-relaxed mb-5" : "text-gray-700 text-lg leading-relaxed"}>{paragraph.trim()}</p>
+            ))
+          ) : (
+            <p className="text-gray-700 text-lg leading-relaxed">{details.intro}</p>
+          )}
         </div>
       </section>
 
