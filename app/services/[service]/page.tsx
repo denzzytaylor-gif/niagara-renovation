@@ -27,7 +27,7 @@ const serviceDetails: Record<string, {
   faq: { q: string; a: string }[];
 }> = {
   "kitchen-renovations": {
-    intro: "Your kitchen is the heart of your home, and a well-designed renovation transforms the way your family lives and entertains. At Niagara Renovation Company, we specialize in full kitchen renovations across Niagara Region — from custom cabinetry and quartz countertops to premium appliance packages and open-concept layouts. Whether you want a modern minimalist kitchen, a warm traditional space, or a bold contemporary design, we work closely with you to create a kitchen that reflects your style and meets your family's needs.\n\nOur kitchen renovation service covers every element of the project under one roof — custom or semi-custom cabinetry, countertop supply and installation (quartz, granite, laminate), kitchen island design and construction, tile backsplash, under-cabinet and pot-light lighting, plumbing rough-in and fixture installation, electrical upgrades, and new flooring. Managing every trade eliminates coordination headaches and gives you a single point of accountability from demolition to final walkthrough.\n\nWe provide detailed written quotes before any work begins, with no surprise charges and no scope changes without your written approval. Our 5-year workmanship warranty ensures our commitment to your kitchen extends long after the last cabinet door is hung. Call (647) 797-9471 or fill out the form above to arrange your free, no-obligation Niagara kitchen renovation consultation.",
+    intro: "A kitchen renovation can be as focused as new cabinets and countertops or as involved as a new layout that moves walls, plumbing and electrical. Niagara Renovation Company handles kitchen renovations for homeowners across Niagara Region, coordinating every trade from demolition to the final walkthrough.\n\nMost kitchen projects come down to a few early decisions: whether the layout stays or changes, which cabinet and countertop materials suit your budget, and whether the work touches plumbing, electrical or structure, which can affect whether a permit is needed. Those choices shape the scope of the project. We provide a detailed written quote before any work begins and make no scope changes without your written approval.\n\nIf you'd like to see what we offer in your own community, choose your city below. Call (647) 797-9471 or fill out the form above to arrange your free, no-obligation consultation.",
     included: [
       "Custom or semi-custom cabinetry design and installation",
       "Countertop supply and installation (quartz, granite, laminate)",
@@ -40,9 +40,10 @@ const serviceDetails: Record<string, {
     ],
     faq: [
       { q: "How long does a kitchen renovation take in Niagara?", a: "A standard kitchen renovation typically takes 4–6 weeks from demolition to completion. Larger or more complex projects may take 8–10 weeks. We provide a detailed timeline at the estimate stage." },
-      { q: "Do I need permits for a kitchen renovation?", a: "Permits are required if you're moving walls, changing plumbing locations, or doing electrical upgrades. We handle all permits on your behalf as part of our full-service offering." },
-      { q: "Can I stay in my home during the renovation?", a: "Yes, most homeowners stay in their home during a kitchen renovation. We set up a temporary kitchen area and maintain a clean, safe worksite throughout the project." },
-      { q: "What kitchen cabinet brands do you work with?", a: "We work with a range of suppliers from mid-range to premium, including local Ontario cabinet makers. We'll recommend options that suit your budget and aesthetic preferences." },
+      { q: "Do I need permits for a kitchen renovation?", a: "It depends on the scope of the work and the requirements that apply to your property. Cosmetic updates can be treated differently from work that changes walls, structure, plumbing or electrical, so it is worth checking before work starts. Where permits are needed, we handle the applications on your behalf." },
+      { q: "Can I stay in my home during the renovation?", a: "Most homeowners do, although the kitchen itself is out of use for much of the project. It helps to plan ahead for meals, for example by setting up a microwave and kettle in another room. We keep the work area clean and safe throughout." },
+      { q: "What affects the cost of a kitchen renovation?", a: "The biggest factors are whether the layout changes, the type of cabinetry (stock, semi-custom or custom), the countertop material, and whether plumbing, electrical or structural work is involved. Your written quote outlines the costs and materials, so you can review the scope before work begins." },
+      { q: "What kind of kitchen cabinets do you install?", a: "We design and install custom and semi-custom cabinetry. We'll recommend options that suit your budget, layout and style." },
       { q: "How do I get a quote for my kitchen renovation?", a: "Simply fill out the form on this page or call us at (647) 797-9471. We'll arrange a free in-home consultation and provide a detailed written estimate within 48 hours — no obligation." },
     ],
   },
@@ -209,23 +210,23 @@ const serviceDetails: Record<string, {
     ],
   },
   "additions-adu": {
-    intro: "Accessory dwelling units are one of the smartest investments a Niagara Region homeowner can make right now. Whether you're building a detached garden suite in your backyard, converting a garage into a self-contained apartment, creating a legal basement suite, or constructing an above-garage secondary unit, Niagara Renovation Company designs and builds ADUs throughout Niagara Region — from concept and zoning review through permits, construction, and final occupancy certificate.\n\nOntario's Planning Act now permits additional residential units in most residential zones, and Niagara's municipalities have updated their zoning bylaws to allow garden suites and secondary units on most residential properties. Our team reviews your specific property's zoning, lot coverage, setbacks, and municipal requirements before any commitment — so you know exactly what's permitted on your lot before you invest a dollar.\n\nA well-designed ADU in Niagara Region generates meaningful rental income that can significantly offset your mortgage or provide comfortable accommodation for aging family members. We have completed garden suites, garage conversions, detached coach houses, above-garage apartments, and legal basement suites throughout Niagara Falls, St. Catharines, Welland, Grimsby, Thorold, Fort Erie, and across the region. Our ADU builds include full architectural drawings, permit coordination, foundation and structural work, separate electrical service, full plumbing, insulation, and complete interior and exterior finishing — built to Ontario Building Code and ready for occupancy.",
+    intro: "An accessory dwelling unit (ADU) is a second, self-contained home on your property: a detached garden suite in the backyard, a converted garage, a unit above a garage, or a secondary suite in the basement. Niagara Renovation Company designs and builds ADUs throughout Niagara Region, from the first zoning review through permits and construction to occupancy.\n\nWhether an ADU is possible, and what form it can take, depends on your property, the provincial rules that apply and your municipality's zoning bylaw. Lot size, setbacks, lot coverage, servicing and access can all play a part. We review your property's zoning with you before any commitment; the applicable requirements and approvals should be confirmed with your municipality.\n\nHomeowners build ADUs for different reasons: a home for a family member, a rental unit, or long-term flexibility. If you are counting on rental income, weigh it against the build, financing, tax and insurance costs, and get independent financial advice. To see local information for your community, choose your city below, or call (647) 797-9471 or fill out the form above to talk through your property.",
     included: [
       "Site assessment and zoning/bylaw review",
       "Architectural design and engineering drawings",
       "Building permit applications and management",
       "Foundation and structural work for detached suites",
       "Full framing, insulation, and exterior cladding",
-      "Separate electrical service and panel installation",
+      "Separate electrical service and panel installation where required",
       "Plumbing rough-in and full bathroom/kitchen finishing",
       "Interior finishing, flooring, trim, and painting",
     ],
     faq: [
-      { q: "Is an ADU legal in my Niagara Region municipality?", a: "Ontario's Planning Act now permits additional residential units in most residential zones. Specific setbacks, coverage limits, and design standards vary by municipality. We review your property's zoning before any commitment and advise you on exactly what is permitted." },
+      { q: "Is an ADU legal in my Niagara Region municipality?", a: "It depends on your property, the provincial rules that apply and your municipality's zoning bylaw, which can cover matters such as setbacks, lot coverage, height and servicing. We review your property's zoning with you before any commitment and explain which options may be possible. The applicable requirements and approvals should be confirmed with your municipality." },
       { q: "What types of ADUs can you build?", a: "We build detached garden suites, garage conversion suites, above-garage apartments, basement secondary suites, and attached in-law additions. Each type has different permit, design, and construction requirements that we navigate on your behalf." },
-      { q: "How long does it take to build a detached garden suite?", a: "A detached garden suite typically takes 4–6 months from permit issuance to occupancy — including 4–8 weeks for permit approval. We provide a detailed schedule at the quoting stage." },
-      { q: "Can a garden suite generate rental income?", a: "Yes. A well-designed ADU in Niagara Region can generate substantial monthly rental income, significantly offsetting your mortgage. Many homeowners find that an ADU pays for itself within a reasonable timeframe in the current rental market." },
-      { q: "How do I find out if I can build an ADU on my property?", a: "Contact us at (647) 797-9471 for a free consultation. We'll review your address, confirm what's permitted under local zoning, and walk you through the entire process from concept to keys." },
+      { q: "How long does it take to build a detached garden suite?", a: "It depends on the design, the permit review and the size and complexity of the unit. A detached garden suite generally moves through design and drawings, then the municipal permit review, then construction through to occupancy. Any required approvals and permits need to be in place before the applicable work begins. We provide a detailed schedule at the quoting stage, once the scope is known." },
+      { q: "Can a garden suite generate rental income?", a: "It may, depending on the rules that apply to your property and to the unit. Any income depends on the unit, its location and the local rental market, and should be weighed against the build, financing, tax and insurance costs. We recommend getting independent financial, tax and legal advice before you decide." },
+      { q: "How do I find out if I can build an ADU on my property?", a: "Contact us at (647) 797-9471 for a free consultation. We'll look at your property and the zoning that applies, talk through which options may be possible, and explain the steps from design to occupancy." },
     ],
   },
   "decks-outdoor": {
@@ -287,6 +288,12 @@ const serviceSEO: Record<string, { description: string }> = {
   "home-additions": {
     description: "Home additions in Niagara Region: rear extensions, second-storey additions and sunrooms built to match your existing house. Licensed contractor.",
   },
+};
+
+// Mid-sentence wording where lower-casing the service name reads badly
+// (e.g. "adus & garden suites"). Services not listed keep service.name.toLowerCase().
+const serviceInlinePhrase: Record<string, string> = {
+  "additions-adu": "ADU and garden suite construction",
 };
 
 const serviceNiagaraH2: Record<string, string> = {
@@ -361,6 +368,7 @@ export default async function ServicePage({ params }: PageProps) {
   if (!service) return notFound();
 
   const details = serviceDetails[service.slug];
+  const servicePhrase = serviceInlinePhrase[service.slug] ?? service.name.toLowerCase();
   const testimonial = TESTIMONIALS.find(t => t.service === service.name) || TESTIMONIALS[0];
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
 
@@ -492,7 +500,15 @@ export default async function ServicePage({ params }: PageProps) {
       {/* INTRO */}
       <section className="py-14 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-gray-700 text-lg leading-relaxed">{details.intro}</p>
+          {/* Intros may contain paragraph breaks ("\n\n"); render each paragraph separately.
+              Single-paragraph intros keep the original single <p>. */}
+          {details.intro.includes("\n\n") ? (
+            details.intro.split("\n\n").filter(p => p.trim()).map((paragraph, i, all) => (
+              <p key={i} className={i < all.length - 1 ? "text-gray-700 text-lg leading-relaxed mb-5" : "text-gray-700 text-lg leading-relaxed"}>{paragraph.trim()}</p>
+            ))
+          ) : (
+            <p className="text-gray-700 text-lg leading-relaxed">{details.intro}</p>
+          )}
         </div>
       </section>
 
@@ -501,13 +517,13 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-gray-900 mb-5">{serviceNiagaraH2[service.slug] ?? `${service.name} Services in Niagara Region`}</h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
-            Niagara Renovation Company has completed {service.name.toLowerCase()} projects in every corner of Niagara Region — from the urban neighbourhoods of {cityLink("st-catharines")} and {cityLink("niagara-falls")} to the wine country estates of {cityLink("lincoln")}, the waterfront communities of {cityLink("port-colborne")} and {cityLink("fort-erie")}, and the growing suburbs of {cityLink("grimsby")} and {cityLink("pelham")}. Our deep familiarity with local building departments, permit processes, and regional building inspectors means your project moves forward without unnecessary delays.
+            Niagara Renovation Company has completed {servicePhrase} projects in every corner of Niagara Region — from the urban neighbourhoods of {cityLink("st-catharines")} and {cityLink("niagara-falls")} to the wine country estates of {cityLink("lincoln")}, the waterfront communities of {cityLink("port-colborne")} and {cityLink("fort-erie")}, and the growing suburbs of {cityLink("grimsby")} and {cityLink("pelham")}. Our deep familiarity with local building departments, permit processes, and regional building inspectors means your project moves forward without unnecessary delays.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed mb-4">
             We understand that Niagara homes come in every style and era — from century-old heritage properties that require sensitive, skilled renovation to modern builds that demand precision and contemporary design expertise. Our team includes tradespeople who have spent decades working specifically in this region, giving us a level of local knowledge that out-of-region contractors simply cannot match. We know the materials that perform best in Niagara&apos;s climate, the suppliers who stock them, and the techniques that deliver lasting results in local conditions.
           </p>
           <p className="text-gray-700 text-lg leading-relaxed">
-            When you choose Niagara Renovation Company for your {service.name.toLowerCase()}, you&apos;re choosing a contractor with roots in this community — one that stands behind its work long after the project is complete. We offer a comprehensive 5-year workmanship warranty on all {service.name.toLowerCase()} work, backed by a company with the reputation, insurance, and financial stability to honour it. Hundreds of Niagara homeowners have trusted us with their most valuable asset. We would be honoured to earn your trust as well.
+            When you choose Niagara Renovation Company for your {servicePhrase}, you&apos;re choosing a contractor with roots in this community — one that stands behind its work long after the project is complete. We offer a comprehensive 5-year workmanship warranty on all {servicePhrase} work, backed by a company with the reputation, insurance, and financial stability to honour it. Hundreds of Niagara homeowners have trusted us with their most valuable asset. We would be honoured to earn your trust as well.
           </p>
         </div>
       </section>
@@ -607,7 +623,7 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Serving All Niagara Municipalities"
-            subtitle={`We provide ${service.name.toLowerCase()} to homeowners in every Niagara community. Click your city to learn more.`}
+            subtitle={`We provide ${servicePhrase} to homeowners in every Niagara community. Click your city to learn more.`}
             image={serviceImage}
             imageAlt={`${service.name} service area across Niagara Region`}
           />

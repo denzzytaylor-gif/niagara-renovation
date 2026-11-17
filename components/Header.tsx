@@ -17,7 +17,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-black/98 shadow-2xl" : "bg-black/95"} backdrop-blur-md border-b border-white/10`}>
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? "bg-black/[.98] shadow-2xl" : "bg-black/95"} backdrop-blur-md border-b border-white/10`}>
       {/* Red accent line when scrolled */}
       <AnimatePresence>
         {scrolled && (
