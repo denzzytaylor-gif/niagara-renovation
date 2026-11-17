@@ -3,9 +3,9 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# www to non-www
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+# non-www to www
+RewriteCond %{HTTP_HOST} ^niagararenovationcompany\.com$ [NC]
+RewriteRule ^ https://www.niagararenovationcompany.com%{REQUEST_URI} [R=301,L]
 
 # Pretty URLs - remove .html
 RewriteCond %{REQUEST_FILENAME} !-d

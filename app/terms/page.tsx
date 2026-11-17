@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Niagara Renovation Company",
+  title: "Terms of Service",
   description: "Terms of Service for Niagara Renovation Company. Read our terms for using our website and renovation services.",
   alternates: { canonical: "https://www.niagararenovationcompany.com/terms" },
   robots: { index: true, follow: true },

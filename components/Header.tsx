@@ -38,8 +38,11 @@ export default function Header() {
             <Link href="/" className="flex items-center group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/Niagara Renovation Company.png"
+                src="/images/logo-80.webp"
+                srcSet="/images/logo-80.webp 2x, /images/logo-120.webp 3x"
                 alt="Niagara Renovation Company"
+                width={40}
+                height={40}
                 className="h-10 w-auto object-contain group-hover:opacity-90 transition-opacity duration-200"
               />
             </Link>

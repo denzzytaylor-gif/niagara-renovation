@@ -53,18 +53,18 @@ export default function HomePageClient() {
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tight">
-                Niagara&apos;s Most{" "}
-                <span className="text-gradient">Trusted</span>
+                Niagara Region{" "}
+                <span className="text-gradient">Home</span>
                 <br />Renovation
-                <br />Contractors
+                <br />Contractor
               </h1>
 
               <p className="text-gray-300 text-xl mb-8 leading-relaxed max-w-lg">
-                From dream kitchens to stunning bathrooms — we transform Niagara homes with expert craftsmanship and lasting quality.
+                From ADUs and garden suites to new kitchens and full home renovations — we transform homes across Niagara Region with expert craftsmanship and lasting quality.
               </p>
 
               <ul className="space-y-3 mb-10">
-                {["Licensed & Insured in Ontario", "Free Estimates – No Obligation", "500+ Projects Completed", "5-Year Workmanship Warranty"].map((item, i) => (
+                {["Licensed & Insured in Ontario", "Free Estimates – No Obligation", "Serving All 12 Niagara Municipalities", "5-Year Workmanship Warranty"].map((item, i) => (
                   <motion.li
                     key={i}
                     initial={{ x: -20 }}
@@ -120,9 +120,9 @@ export default function HomePageClient() {
                 <div>
                   <div className="text-red-400 text-sm font-bold flex items-center gap-1">
                     <svg className="w-4 h-4 fill-red-500" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                    4.9/5 Rating
+                    Free Estimates
                   </div>
-                  <div className="text-gray-400 text-xs">87 verified reviews</div>
+                  <div className="text-gray-400 text-xs">Detailed written quote, no obligation</div>
                 </div>
               </div>
             </motion.div>
@@ -198,8 +198,8 @@ export default function HomePageClient() {
               </div>
               {/* Floating stat badge */}
               <div className="absolute -bottom-6 -right-4 bg-red-600 text-white rounded-2xl px-6 py-4 shadow-xl">
-                <div className="text-3xl font-black">500+</div>
-                <div className="text-sm font-semibold text-red-100">Projects Completed</div>
+                <div className="text-2xl font-black">Licensed</div>
+                <div className="text-sm font-semibold text-red-100">& Insured in Ontario</div>
               </div>
               {/* Second smaller photo */}
               <div className="absolute -top-6 -left-4 w-36 h-36 rounded-2xl overflow-hidden shadow-xl border-4 border-white hidden lg:block">
@@ -226,17 +226,17 @@ export default function HomePageClient() {
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-5 leading-tight">Niagara Region&apos;s Most Trusted Renovation Contractor</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-5">
-                Niagara Renovation Company is a full-service home renovation contractor serving homeowners across all 12 municipalities in the Niagara Region, Ontario. From the urban neighbourhoods of St. Catharines and Niagara Falls to the wine country estates of Lincoln — we bring premium craftsmanship and genuine care to every project.
+                Niagara Renovation Company is a full-service general contractor for homeowners across all 12 municipalities in the Niagara Region, Ontario — from ADUs and new kitchens to full home renovations. From the urban neighbourhoods of St. Catharines and Niagara Falls to the wine country estates of Lincoln — we bring premium craftsmanship and genuine care to every project.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed mb-8">
                 We are a Taylor and Co Company — a name built on integrity, community, and a relentless commitment to quality. Every project starts with a free consultation and a detailed written estimate with no hidden fees. Our 5-year workmanship warranty means our commitment doesn&apos;t end on move-in day.
               </p>
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {[
-                  { num: "500+", label: "Projects Completed" },
+                  { num: "Free", label: "No-Obligation Estimates" },
                   { num: "5-Year", label: "Workmanship Warranty" },
                   { num: "12", label: "Niagara Municipalities" },
-                  { num: "4.9★", label: "Average Google Rating" },
+                  { num: "One", label: "Contractor for Every Trade" },
                 ].map((stat, i) => (
                   <div key={i} className="bg-gray-50 rounded-xl p-4 border border-gray-100">
                     <div className="text-2xl font-black text-red-600">{stat.num}</div>
@@ -369,16 +369,17 @@ export default function HomePageClient() {
           />
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { label: "Bathroom Remodeling Services", img: "/images/bathroom%20remodeling%20services.png" },
-              { label: "Bathroom Remodeling", img: "/images/bathroom%20remodeling.png" },
-              { label: "Renovation Project Update", img: "/images/contractor-update.png" },
-              { label: "Professional Contractors", img: "/images/contractors.png" },
-              { label: "General Contractor Work", img: "/images/general%20contractor.png" },
-              { label: "General Contracting Services", img: "/images/general%20contractors.png" },
-              { label: "House Remodel", img: "/images/house-remodel.png" },
-              { label: "Laundry Room Remodeling", img: "/images/laundry%20room%20remodeling.png" },
-              { label: "Living Room Remodeling", img: "/images/living%20room%20remodeling.png" },
-              { label: "TV Room Contracting", img: "/images/tv%20room%20contracting.png" },
+              // Optimized WebP variants generated by scripts/optimize-images.js
+              { label: "Bathroom Remodeling Services", img: "bathroom-remodeling-services", widths: [480, 960] },
+              { label: "Bathroom Remodeling", img: "bathroom-remodeling", widths: [480, 960] },
+              { label: "Renovation Project Update", img: "contractor-update", widths: [480] },
+              { label: "Professional Contractors", img: "contractors", widths: [480, 960] },
+              { label: "General Contractor Work", img: "general-contractor", widths: [480, 960] },
+              { label: "General Contracting Services", img: "general-contractors", widths: [480, 960] },
+              { label: "House Remodel", img: "house-remodel", widths: [480, 960] },
+              { label: "Laundry Room Remodeling", img: "laundry-room-remodeling", widths: [480, 960] },
+              { label: "Living Room Remodeling", img: "living-room-remodeling", widths: [480, 960] },
+              { label: "TV Room Contracting", img: "tv-room-contracting", widths: [480, 960] },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -390,10 +391,13 @@ export default function HomePageClient() {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={item.img}
+                  src={`/images/gallery/${item.img}-480.webp`}
+                  srcSet={item.widths.map(w => `/images/gallery/${item.img}-${w}.webp ${w}w`).join(", ")}
+                  sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 50vw"
                   alt={item.label}
                   width={600}
                   height={338}
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />

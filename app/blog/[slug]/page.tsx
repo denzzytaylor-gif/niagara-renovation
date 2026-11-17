@@ -4,6 +4,8 @@ import Link from "next/link";
 import CTABanner from "@/components/CTABanner";
 import Breadcrumb from "@/components/Breadcrumb";
 import IMAGES from "@/lib/images.json";
+import { SERVICES, CITIES } from "@/lib/data";
+import { ARTICLE_SERVICES, ARTICLE_FEATURED_CITIES, PRIORITY_SERVICES } from "@/lib/links";
 
 export const dynamic = "force-static";
 
@@ -17,6 +19,7 @@ const posts: Record<string, {
   dateISO: string;
   category: string;
   excerpt: string;
+  metaDescription: string;
   image: string;
   content: string;
 }> = {
@@ -26,6 +29,7 @@ const posts: Record<string, {
     dateISO: "2025-03-01",
     category: "Tips & Advice",
     excerpt: "Hiring the wrong contractor is the costliest mistake a homeowner can make. Here is a practical, step-by-step guide to finding and vetting a licensed renovation contractor in Niagara Region, Ontario.",
+    metaDescription: "A step-by-step guide to vetting a renovation contractor in Niagara Region: licensing, insurance, references, written quotes and contract terms.",
     image: IMAGES.blog.post_choose_contractor,
     content: `
 Hiring the right renovation contractor in Niagara Region is one of the most important decisions you will make as a homeowner. The right contractor delivers your project on time, on budget, and to a standard you can be proud of for decades. The wrong one can cost you tens of thousands of dollars, months of stress, and lasting damage to your home. This guide will walk you through exactly how to find, evaluate, and hire a trusted contractor in Niagara Region, Ontario.
@@ -67,6 +71,7 @@ At Niagara Renovation Company, we welcome all of these questions and will happil
     dateISO: "2025-02-15",
     category: "Permits & Legal",
     excerpt: "Many Niagara homeowners are surprised to learn which renovations require a building permit and which do not. This guide explains Ontario permit requirements so you can renovate with confidence and avoid costly mistakes.",
+    metaDescription: "Which renovations need a building permit in Niagara Region? Ontario permit requirements explained, so you can plan your project and avoid costly mistakes.",
     image: IMAGES.blog.post_permits,
     content: `
 One of the most common questions we receive from Niagara Region homeowners is whether their planned renovation requires a building permit. The answer matters enormously — unpermitted work can prevent you from selling your home, invalidate your insurance, and force you to demolish and redo completed work at your own expense. This guide explains exactly which renovations require permits in Niagara Region and how the process works.
@@ -106,6 +111,7 @@ At Niagara Renovation Company, we manage all permit applications, required drawi
     dateISO: "2025-02-01",
     category: "ROI & Value",
     excerpt: "Not all renovations are created equal when it comes to return on investment. Discover which home renovation projects deliver the strongest resale value for Niagara Region homeowners.",
+    metaDescription: "Which renovations add the most resale value in Niagara Region? A practical look at the projects that deliver the strongest return for homeowners.",
     image: IMAGES.blog.post_resale_value,
     content: `
 Whether you are renovating to sell or simply want to make smart long-term investments in your home, understanding which projects deliver the best return on investment is essential. In Niagara Region's real estate market, certain renovations consistently move the needle on appraisal values and buyer interest. Here is what local real estate professionals and renovation contractors agree deliver the best returns.
@@ -145,6 +151,7 @@ Contact Niagara Renovation Company at (647) 797-9471 to discuss a renovation str
     dateISO: "2025-01-15",
     category: "Kitchens",
     excerpt: "One of the most common questions homeowners ask before starting a kitchen renovation is how long they will be without a functional kitchen. This guide breaks down realistic timelines for every stage of the process.",
+    metaDescription: "How long does a kitchen renovation take in Niagara? Realistic timelines for design, ordering, demolition, installation and finishing.",
     image: IMAGES.blog.post_kitchen_timeline,
     content: `
 Before committing to a kitchen renovation, most Niagara Region homeowners want to know one thing above all others: how long will this take? The honest answer is that kitchen renovation timelines vary significantly based on the scope of the project, the size of the kitchen, and whether the project involves permits or structural changes. Here is a realistic breakdown of what to expect at each stage.
@@ -190,6 +197,7 @@ Contact us at (647) 797-9471 to discuss your specific kitchen project. We'll pro
     dateISO: "2025-01-01",
     category: "Energy & Savings",
     excerpt: "Rising energy costs and Ontario's climate make energy-efficient renovations one of the smartest investments Niagara homeowners can make. Learn which upgrades deliver the best comfort improvements and utility savings.",
+    metaDescription: "Energy-efficient renovations for Niagara homes: the upgrades that improve comfort and lower utility bills in Ontario's climate.",
     image: IMAGES.blog.post_energy_efficient,
     content: `
 Niagara Region homeowners face Ontario's full range of seasonal extremes — cold, wet winters with significant heating demand and humid summers that push air conditioning usage. In this climate, energy-efficient renovations are not just about environmental responsibility — they are about real comfort improvements and meaningful reductions in monthly utility costs. Here are the most impactful energy efficiency upgrades available to Niagara homeowners.
@@ -229,6 +237,7 @@ At Niagara Renovation Company, we incorporate energy efficiency best practices i
     dateISO: "2025-12-15",
     category: "Bathrooms",
     excerpt: "A successful bathroom renovation requires careful planning before a single tile is removed. Use this comprehensive checklist to plan your Niagara bathroom renovation from start to finish.",
+    metaDescription: "A complete bathroom renovation checklist for Niagara homeowners, covering layout, budget, fixtures, permits and scheduling from start to finish.",
     image: IMAGES.blog.post_bathroom_checklist,
     content: `
 A bathroom renovation is one of the most popular home improvement projects in Niagara Region — and for good reason. A well-executed bathroom transformation adds real value to your home, dramatically improves daily life, and can be completed in a relatively short timeframe. But success requires careful planning. Use this checklist to navigate your Niagara bathroom renovation from concept to completion.
@@ -276,6 +285,7 @@ Ready to start planning your Niagara bathroom renovation? Contact Niagara Renova
     dateISO: "2026-03-15",
     category: "Kitchens",
     excerpt: "A comprehensive breakdown of kitchen renovation costs in Niagara Region — from budget refreshes to full high-end transformations. Includes average costs for cabinetry, countertops, appliances, and labour.",
+    metaDescription: "What a kitchen renovation costs in Niagara Region, from budget refreshes to full remodels, with typical costs for cabinetry, countertops and labour.",
     image: IMAGES.blog.post_kitchen_cost,
     content: `
 Planning a kitchen renovation in the Niagara Region? One of the first questions every homeowner asks is: "How much is this going to cost?" The honest answer is that kitchen renovation costs vary widely depending on the size of your kitchen, the materials you choose, and the scope of the work. In this guide, we'll break down typical costs for different types of kitchen renovations in Niagara Region so you can plan your budget with confidence.
@@ -317,6 +327,7 @@ At Niagara Renovation Company, we offer free kitchen renovation consultations th
     dateISO: "2026-02-28",
     category: "Bathrooms",
     excerpt: "Discover the hottest bathroom renovation trends Niagara homeowners are embracing — from walk-in tile showers to warm earth tones, freestanding tubs, and heated floors.",
+    metaDescription: "Bathroom renovation trends in Niagara for 2026: walk-in tile showers, warm earth tones, freestanding tubs and heated floors.",
     image: IMAGES.blog.post_bathroom_trends,
     content: `
 Bathroom renovation trends evolve quickly, and Niagara Region homeowners are embracing some exciting new directions. Whether you're planning a full master ensuite transformation or a focused main bath update, here are the five trends our design team is seeing most frequently in Niagara homes right now.
@@ -356,6 +367,7 @@ At Niagara Renovation Company, our bathroom renovation team helps Niagara Region
     dateISO: "2026-01-20",
     category: "Basements",
     excerpt: "Everything Niagara homeowners need to know before finishing their basement — permits, moisture management, egress windows, insulation, and how to maximize your investment.",
+    metaDescription: "What to know before finishing a basement in Niagara: permits, moisture management, egress windows, insulation and getting the most from the space.",
     image: IMAGES.blog.post_basement_guide,
     content: `
 Finishing your basement is one of the smartest investments a Niagara Region homeowner can make. A professionally finished basement can add significant liveable square footage to your home, potentially add a bedroom (with proper egress windows), dramatically increase your home's resale value, and even generate rental income as a legal secondary suite. But before you dive in, there are several important things every Niagara homeowner should understand about the basement finishing process.
@@ -405,12 +417,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!post) return { title: "Post Not Found" };
 
   return {
-    title: `${post.title} | Niagara Renovation Company`,
-    description: post.excerpt,
+    title: post.title,
+    description: post.metaDescription,
     alternates: { canonical: `https://www.niagararenovationcompany.com/blog/${slug}` },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
+      description: post.metaDescription,
       url: `https://www.niagararenovationcompany.com/blog/${slug}`,
       images: [{ url: post.image, width: 1200, height: 630, alt: post.title }],
       type: "article",
@@ -473,6 +485,12 @@ export default async function BlogPostPage({ params }: PageProps) {
   };
 
   const relatedPosts = allPostsForNav.filter(p => p.slug !== slug).slice(0, 3);
+  const relatedServices = (ARTICLE_SERVICES[slug] ?? [])
+    .map(s => SERVICES.find(sv => sv.slug === s))
+    .filter((s): s is typeof SERVICES[number] => Boolean(s));
+  const featuredCities = ARTICLE_FEATURED_CITIES
+    .map(c => CITIES.find(city => city.slug === c))
+    .filter((c): c is typeof CITIES[number] => Boolean(c));
 
   return (
     <>
@@ -549,6 +567,34 @@ export default async function BlogPostPage({ params }: PageProps) {
               </a>
             </div>
           </div>
+
+          {relatedServices.length > 0 && (
+            <div className="mt-10 bg-gray-50 border border-gray-200 rounded-2xl p-6">
+              <h2 className="text-xl font-black text-gray-900 mb-4">Related Services</h2>
+              <ul className="space-y-3">
+                {relatedServices.map(s => (
+                  <li key={s.slug} className="text-gray-700">
+                    <Link href={`/services/${s.slug}`} className="text-red-600 font-bold hover:underline">
+                      {s.name} across Niagara Region
+                    </Link>
+                    {PRIORITY_SERVICES.includes(s.slug) && (
+                      <span className="text-sm">
+                        {" "}— including{" "}
+                        {featuredCities.map((c, i) => (
+                          <span key={c.slug}>
+                            {i > 0 && (i === featuredCities.length - 1 ? " and " : ", ")}
+                            <Link href={`/${c.slug}/${s.slug}`} className="text-red-600 hover:underline">
+                              {c.name}
+                            </Link>
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="mt-8 pt-6 border-t border-gray-100">
             <Link href="/blog" className="inline-flex items-center gap-2 text-red-600 font-bold hover:underline text-sm">
