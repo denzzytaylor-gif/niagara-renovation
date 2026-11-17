@@ -53,14 +53,14 @@ export default function HomePageClient() {
               </div>
 
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 tracking-tight">
-                Niagara&apos;s Most{" "}
-                <span className="text-gradient">Trusted</span>
-                <br />Renovation
-                <br />Contractors
+                Niagara Region{" "}
+                <span className="text-gradient">General</span>
+                <br />Contractor for
+                <br />Renovations
               </h1>
 
               <p className="text-gray-300 text-xl mb-8 leading-relaxed max-w-lg">
-                From dream kitchens to stunning bathrooms — we transform Niagara homes with expert craftsmanship and lasting quality.
+                From ADUs and garden suites to new kitchens and full home renovations — we transform homes across Niagara Region with expert craftsmanship and lasting quality.
               </p>
 
               <ul className="space-y-3 mb-10">
@@ -226,7 +226,7 @@ export default function HomePageClient() {
               </div>
               <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-5 leading-tight">Niagara Region&apos;s Most Trusted Renovation Contractor</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-5">
-                Niagara Renovation Company is a full-service home renovation contractor serving homeowners across all 12 municipalities in the Niagara Region, Ontario. From the urban neighbourhoods of St. Catharines and Niagara Falls to the wine country estates of Lincoln — we bring premium craftsmanship and genuine care to every project.
+                Niagara Renovation Company is a full-service general contractor for homeowners across all 12 municipalities in the Niagara Region, Ontario — from ADUs and new kitchens to full home renovations. From the urban neighbourhoods of St. Catharines and Niagara Falls to the wine country estates of Lincoln — we bring premium craftsmanship and genuine care to every project.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed mb-8">
                 We are a Taylor and Co Company — a name built on integrity, community, and a relentless commitment to quality. Every project starts with a free consultation and a detailed written estimate with no hidden fees. Our 5-year workmanship warranty means our commitment doesn&apos;t end on move-in day.

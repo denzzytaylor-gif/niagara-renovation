@@ -3,7 +3,7 @@ import HomePageClient from "./HomePageClient";
 
 export const metadata: Metadata = {
   title: "General Contractor in Niagara Region | Niagara Renovation Company",
-  description: "Licensed general contractor serving all 12 Niagara Region municipalities: basements, kitchens, ADUs, additions and full home renovations. Free estimates.",
+  description: "General contractor serving all 12 Niagara Region municipalities: ADUs, kitchens and full home renovations, plus basements and additions. Free estimates.",
   alternates: { canonical: "https://www.niagararenovationcompany.com" },
   openGraph: {
     title: "General Contractor in Niagara Region | Niagara Renovation Company",
