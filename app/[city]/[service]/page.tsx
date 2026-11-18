@@ -151,6 +151,28 @@ Homeowners build ADUs for different reasons — rental income to help offset a m
     `A professionally built home addition is the most powerful way to add square footage, functionality, and value to your ${city} property without the disruption and cost of moving. Whether you are building a rear addition to expand your main living area, adding a second storey, constructing a garage with living space above, or enclosing a porch into a year-round sunroom, Niagara Renovation Company has the expertise, experience, and local permit knowledge to deliver your ${city} home addition from design through completion.\n\nHome additions in ${city} ${landmark} require a contractor who understands local zoning regulations, lot coverage rules, setback requirements, and the Niagara Region building permit process. Properties across areas like ${neigh} vary significantly in lot size, existing footprint, and permitted building envelope — and navigating these regulations correctly from the beginning saves considerable time and money. Our team has successfully permitted and built additions throughout ${city} and all of Niagara Region, and we handle every step of the approval process on your behalf.\n\nOur home addition service is truly full-service: site assessment and feasibility review, design consultation and permit drawing coordination (with licensed designers or architects as required), foundation and structural work, framing, roofing tie-in, insulation and air barrier, exterior cladding and windows, electrical, plumbing, HVAC extension, drywall, flooring, cabinetry, and all interior and exterior finishing. We manage every trade involved in your addition project, eliminating the coordination complexity and accountability gaps that derail DIY-managed addition projects.\n\nA quality home addition built by licensed, insured contractors with proper permits is a permanent, insurable improvement to your ${city} property — reflected in your home's appraised value and desirability to future buyers. Unpermitted additions create legal and financial complications that far outweigh any short-term savings. For a free consultation and estimate on your ${city} home addition, call (647) 797-9471 or fill out the form above today.`,
 };
 
+// Mid-sentence wording where lower-casing the service name reads badly
+// ("adus & garden suites"). Services not listed keep service.name.toLowerCase().
+const cityServiceInlinePhrase: Record<string, string> = {
+  "additions-adu": "ADU and garden suite construction",
+};
+
+// Singular project noun used in the FAQ questions ("a kitchen renovation project").
+const cityServiceFaqNoun: Record<string, string> = {
+  "basement-finishing": "basement renovation",
+  "kitchen-renovations": "kitchen renovation",
+  "additions-adu": "ADU or garden suite",
+  "general-contracting": "general contracting",
+  "home-additions": "home addition",
+  "bathroom-renovations": "bathroom renovation",
+  "decks-outdoor": "deck or outdoor living",
+  "commercial-renovations": "commercial renovation",
+  "roofing": "roofing",
+  "flooring": "flooring",
+  "painting": "painting",
+  "windows-and-doors": "window and door",
+};
+
 function getBodyCopy(serviceName: string, serviceSlug: string, cityName: string, cityLandmark: string, neighbourhoods: string[]): string {
   const neigh = neighbourhoods.length > 0 ? neighbourhoods.slice(0, 3).join(", ") : cityName;
   const template = serviceBodyTemplates[serviceSlug];
@@ -164,6 +186,7 @@ export default async function CityServicePage({ params }: PageProps) {
   const service = SERVICES.find(s => s.slug === serviceSlug);
   if (!city || !service) return notFound();
 
+  const servicePhrase = cityServiceInlinePhrase[service.slug] ?? service.name.toLowerCase();
   const bodyCopy = getBodyCopy(service.name, service.slug, city.name, city.landmark, (city as CityServiceData).neighbourhoods ?? []);
   const serviceImage = SERVICE_IMAGES[service.slug] || SERVICE_IMAGES["kitchen-renovations"];
   const pageDescription = serviceLocationDescription(service.slug, service.name, city.name);
@@ -209,7 +232,7 @@ export default async function CityServicePage({ params }: PageProps) {
         "itemOffered": {
           "@type": "Service",
           "name": `${service.name} in ${city.name}`,
-          "description": `Professional ${service.name.toLowerCase()} services for homeowners in ${city.name}, Ontario.`,
+          "description": `Professional ${servicePhrase} services for homeowners in ${city.name}, Ontario.`,
         },
       }],
     },
@@ -235,15 +258,25 @@ export default async function CityServicePage({ params }: PageProps) {
     },
   };
 
+  // One FAQ source for both the visible FAQ section and the FAQPage schema,
+  // so the two always match. Timeline answer avoids unverified start dates.
+  const faqNoun = cityServiceFaqNoun[service.slug] ?? service.name.toLowerCase();
+  const faqNounWithArticle = `${/^[aeiou]/i.test(faqNoun) ? "an" : "a"} ${faqNoun}`;
+  const faqs = [
+    { q: `How do I get a quote for ${faqNounWithArticle} project in ${city.name}?`, a: `Contact us for a free, no-obligation estimate. Call (647) 797-9471, fill out the form above, or email info@niagararenovationcompany.com. We respond within 2 business hours and provide a detailed written estimate.` },
+    { q: `Are you licensed for ${faqNoun} work in ${city.name}, Ontario?`, a: `Yes, Niagara Renovation Company is fully licensed and insured throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage for all workers.` },
+    { q: `How long does ${faqNounWithArticle} project take in ${city.name}?`, a: `Project timelines vary based on scope and complexity. We'll discuss the expected timeline when we review your project. Call (647) 797-9471 to discuss your project in ${city.name}.` },
+    { q: `Do you handle permits for ${faqNoun} projects in ${city.name}?`, a: `Yes, we manage all building permit applications and inspections. We are familiar with the local permit process and building department requirements in ${city.name}.` },
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": `How do I get a ${service.name.toLowerCase()} quote in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `Contact Niagara Renovation Company for a free, no-obligation ${service.name.toLowerCase()} estimate in ${city.name}. Call (647) 797-9471, fill out our online form, or email info@niagararenovationcompany.com. We respond within 2 business hours.` } },
-      { "@type": "Question", "name": `Are you licensed for ${service.name.toLowerCase()} in ${city.name}, Ontario?`, "acceptedAnswer": { "@type": "Answer", "text": `Yes, Niagara Renovation Company is fully licensed and insured to perform ${service.name.toLowerCase()} throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage.` } },
-      { "@type": "Question", "name": `How long does ${service.name.toLowerCase()} take in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `Project timelines vary based on scope and complexity. We provide a detailed project schedule with every written estimate. Contact us at (647) 797-9471 to discuss your specific ${city.name} ${service.name.toLowerCase()} project.` } },
-      { "@type": "Question", "name": `Do you handle permits for ${service.name.toLowerCase()} in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `Yes, we manage all building permit applications and inspections for ${service.name.toLowerCase()} projects in ${city.name}. We are familiar with local building codes and the permit process at the ${city.name} building department.` } },
-    ],
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
   };
 
   const trustSignals = [
@@ -287,7 +320,7 @@ export default async function CityServicePage({ params }: PageProps) {
                 {service.name} in {city.name}, Ontario
               </h1>
               <p className="text-gray-300 text-xl mb-6">
-                Expert {service.name.toLowerCase()} serving {city.name} homeowners. Licensed, insured, and trusted across Niagara Region.
+                Expert {servicePhrase} serving {city.name} homeowners. Licensed, insured, and trusted across Niagara Region.
               </p>
               <a href="tel:6477979471" data-track="phone-click" className="inline-flex items-center gap-2 text-white hover:text-red-400 font-bold text-lg transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -378,7 +411,7 @@ export default async function CityServicePage({ params }: PageProps) {
             </>
           )}
           <p className="text-gray-700 text-lg leading-relaxed">
-            Our {service.name.toLowerCase()} crews are active throughout {city.name} and are familiar with local building permit requirements, preferred regional suppliers, and the specific construction characteristics common to homes in this community. Whether your home is in {((city as CityServiceData).neighbourhoods ?? []).slice(0, 2).join(", ") || city.name} or anywhere else in {city.name}, we bring the same standard of craftsmanship and accountability to every project we take on — backed by our 5-year workmanship warranty and comprehensive insurance coverage.
+            Our {servicePhrase} crews are active throughout {city.name} and are familiar with local building permit requirements, preferred regional suppliers, and the specific construction characteristics common to homes in this community. Whether your home is in {((city as CityServiceData).neighbourhoods ?? []).slice(0, 2).join(", ") || city.name} or anywhere else in {city.name}, we bring the same standard of craftsmanship and accountability to every project we take on — backed by our 5-year workmanship warranty and comprehensive insurance coverage.
           </p>
         </div>
       </section>
@@ -388,12 +421,7 @@ export default async function CityServicePage({ params }: PageProps) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-gray-900 mb-6">{service.name} FAQs for {city.name} Homeowners</h2>
           <div className="space-y-4">
-            {[
-              { q: `How do I get a ${service.name.toLowerCase()} quote in ${city.name}?`, a: `Contact us for a free, no-obligation estimate. Call (647) 797-9471, fill out the form above, or email info@niagararenovationcompany.com. We respond within 2 business hours and provide a detailed written estimate.` },
-              { q: `Are you licensed for ${service.name.toLowerCase()} in ${city.name}, Ontario?`, a: `Yes, Niagara Renovation Company is fully licensed and insured throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage for all workers.` },
-              { q: `How quickly can you start ${service.name.toLowerCase()} in ${city.name}?`, a: `We typically begin new projects within 2–6 weeks of signing the contract, depending on our current schedule. We offer free consultations and same-week estimates.` },
-              { q: `Do you handle permits for ${service.name.toLowerCase()} in ${city.name}?`, a: `Yes, we manage all building permit applications and inspections. We are familiar with the local permit process and building department requirements in ${city.name}.` },
-            ].map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 group">
                 <summary className="px-6 py-4 cursor-pointer font-semibold text-gray-900 hover:text-red-600 transition-colors list-none flex justify-between items-center">
                   {faq.q}
@@ -412,7 +440,7 @@ export default async function CityServicePage({ params }: PageProps) {
           <h2 className="text-2xl font-black text-gray-900 mb-4">Planning More Work in {city.name}?</h2>
           {relatedServices.length > 0 && (
             <p className="text-gray-700 text-lg leading-relaxed mb-4">
-              Many {city.name} projects involve more than one trade. Alongside {service.name.toLowerCase()}, we also handle{" "}
+              Many {city.name} projects involve more than one trade. Alongside {servicePhrase}, we also handle{" "}
               {relatedServices.map((s, i) => (
                 <span key={s.slug}>
                   {i > 0 && (i === relatedServices.length - 1 ? " and " : ", ")}
