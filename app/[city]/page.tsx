@@ -58,15 +58,23 @@ export default async function CityPage({ params }: PageProps) {
     "areaServed": { "@type": "City", "name": city.name, "addressRegion": "ON", "addressCountry": "CA" },
   };
 
+  // One FAQ source for both the visible FAQ section and the FAQPage schema,
+  // so the two always match. Timeline answer avoids unverified start dates.
+  const faqs = [
+    { q: `How do I get a renovation quote in ${city.name}?`, a: `Contact us for a free, no-obligation estimate in ${city.name}. Call (647) 797-9471, fill out our online form, or email info@niagararenovationcompany.com. We respond within 2 business hours and provide a detailed written estimate.` },
+    { q: `Are you licensed to renovate in ${city.name}, Ontario?`, a: `Yes, Niagara Renovation Company is fully licensed and insured to operate throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage.` },
+    { q: `How long does a renovation take in ${city.name}?`, a: `Project timelines vary based on scope and complexity. We'll discuss the expected timeline when we review your project. Call (647) 797-9471 to discuss your project in ${city.name}.` },
+    { q: `Do you handle permits in ${city.name}?`, a: `Yes, we handle all permit applications and inspections for renovation projects in ${city.name}. We are familiar with local building codes and requirements.` },
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": `How do I get a renovation quote in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `Contact Niagara Renovation Company for a free, no-obligation estimate in ${city.name}. Call (647) 797-9471, fill out our online form, or email info@niagararenovationcompany.com. We respond within 2 business hours.` } },
-      { "@type": "Question", "name": `Are you licensed to renovate in ${city.name}, Ontario?`, "acceptedAnswer": { "@type": "Answer", "text": `Yes, Niagara Renovation Company is fully licensed and insured to operate throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage.` } },
-      { "@type": "Question", "name": `How quickly can you start a renovation in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `We typically begin new projects in ${city.name} within 2–6 weeks of signing the contract, depending on our current schedule. We offer free consultations and same-week estimates.` } },
-      { "@type": "Question", "name": `Do you handle permits in ${city.name}?`, "acceptedAnswer": { "@type": "Answer", "text": `Yes, we handle all permit applications and inspections for renovation projects in ${city.name}. We are familiar with local building codes and requirements.` } },
-    ],
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
   };
 
   return (
@@ -219,12 +227,7 @@ export default async function CityPage({ params }: PageProps) {
             imageAlt={`Renovation FAQs for ${city.name}`}
           />
           <div className="space-y-4">
-            {[
-              { q: `How do I get a renovation quote in ${city.name}?`, a: `Contact us for a free, no-obligation estimate in ${city.name}. Call (647) 797-9471, fill out our online form, or email info@niagararenovationcompany.com. We respond within 2 business hours and provide a detailed written estimate.` },
-              { q: `Are you licensed to renovate in ${city.name}, Ontario?`, a: `Yes, Niagara Renovation Company is fully licensed and insured to operate throughout ${city.name} and all of Niagara Region. We carry comprehensive liability insurance and WSIB coverage.` },
-              { q: `How quickly can you start a renovation in ${city.name}?`, a: `We typically begin new projects in ${city.name} within 2–6 weeks of signing the contract. We offer free consultations and same-week estimates.` },
-              { q: `Do you handle permits in ${city.name}?`, a: `Yes, we handle all permit applications and inspections for renovation projects in ${city.name}. We are familiar with all local building codes and requirements.` },
-            ].map((faq, i) => (
+            {faqs.map((faq, i) => (
               <details key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 group">
                 <summary className="px-6 py-4 cursor-pointer font-semibold text-gray-900 hover:text-red-600 transition-colors list-none flex justify-between items-center">
                   {faq.q}
