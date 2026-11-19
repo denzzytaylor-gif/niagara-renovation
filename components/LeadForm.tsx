@@ -8,9 +8,12 @@ const CRM_WEBHOOK_URL = "https://taylor-co-crm-production.up.railway.app/api/web
 interface LeadFormProps {
   defaultCity?: string;
   defaultService?: string;
+  /** Hide unconfirmed claims (heading, response time, button wording, badges).
+   *  Fields, submission, hidden inputs, redirects and tracking are unchanged. */
+  neutral?: boolean;
 }
 
-export default function LeadForm({ defaultCity, defaultService }: LeadFormProps) {
+export default function LeadForm({ defaultCity, defaultService, neutral = false }: LeadFormProps) {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     const payload = Object.fromEntries(new FormData(e.currentTarget).entries());
     fetch(CRM_WEBHOOK_URL, {
@@ -26,8 +29,8 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
     <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10 p-6 shadow-2xl">
       {/* Header */}
       <div className="text-center mb-5">
-        <h3 className="text-2xl font-black text-white mb-1">Get Your FREE Quote</h3>
-        <p className="text-red-400 text-sm font-semibold">Response within 24 hours &middot; No obligation</p>
+        <h3 className="text-2xl font-black text-white mb-1">{neutral ? "Tell Us About Your Project" : "Get Your FREE Quote"}</h3>
+        {!neutral && <p className="text-red-400 text-sm font-semibold">Response within 24 hours &middot; No obligation</p>}
       </div>
 
       <form
@@ -137,7 +140,7 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
           </svg>
-          Request My Free Quote
+          {neutral ? "Send My Project Details" : "Request My Free Quote"}
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
           </svg>
@@ -155,17 +158,21 @@ export default function LeadForm({ defaultCity, defaultService }: LeadFormProps)
         </a>
       </div>
 
-      {/* Trust badges */}
-      <div className="mt-4 grid grid-cols-2 gap-1.5 text-xs text-gray-400">
-        {["Licensed & Insured", "Free Estimates", "Local Family Business", "5-Year Warranty"].map((badge, i) => (
-          <span key={i} className="flex items-center gap-1">
-            <svg className="w-3.5 h-3.5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-            </svg>
-            {badge}
-          </span>
-        ))}
-      </div>
+      {!neutral && (
+        <>
+          {/* Trust badges */}
+          <div className="mt-4 grid grid-cols-2 gap-1.5 text-xs text-gray-400">
+            {["Licensed & Insured", "Free Estimates", "Local Family Business", "5-Year Warranty"].map((badge, i) => (
+              <span key={i} className="flex items-center gap-1">
+                <svg className="w-3.5 h-3.5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                </svg>
+                {badge}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

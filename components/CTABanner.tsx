@@ -7,11 +7,14 @@ import { PHONE } from "@/lib/data";
 interface CTABannerProps {
   title?: string;
   subtitle?: string;
+  /** Hide the availability label and trust badges (for pages that avoid unconfirmed claims). */
+  minimal?: boolean;
 }
 
 export default function CTABanner({
   title = "Ready to Transform Your Home?",
   subtitle = "Get a free, no-obligation quote from Niagara's most trusted renovation team. We respond within 2 hours.",
+  minimal = false,
 }: CTABannerProps) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -62,10 +65,12 @@ export default function CTABanner({
           ref={ref}
           className={mounted ? (visible ? "reveal-visible" : "reveal-pending") : ""}
         >
-          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 rounded-full px-4 py-2 mb-6">
-            <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            <span className="text-red-400 text-sm font-semibold">Limited Availability — Book Your Consultation Today</span>
-          </div>
+          {!minimal && (
+            <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 rounded-full px-4 py-2 mb-6">
+              <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+              <span className="text-red-400 text-sm font-semibold">Limited Availability — Book Your Consultation Today</span>
+            </div>
+          )}
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
             {title}
@@ -85,7 +90,7 @@ export default function CTABanner({
                 data-track="cta-quote"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-black py-4 px-8 rounded-2xl text-lg transition-all amber-glow shadow-xl"
               >
-                Get My Free Quote Today
+                {minimal ? "Contact Us" : "Get My Free Quote Today"}
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
@@ -106,22 +111,26 @@ export default function CTABanner({
             </motion.a>
           </div>
 
-          {/* Trust badges row */}
-          <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-gray-400">
-            {[
-              { label: "No Obligation" },
-              { label: "Response Within 2 Hours" },
-              { label: "Licensed & Insured" },
-              { label: "5-Year Warranty" },
-            ].map((badge, i) => (
-              <span key={i} className="flex items-center gap-1.5">
-                <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                </svg>
-                {badge.label}
-              </span>
-            ))}
-          </div>
+          {!minimal && (
+            <>
+            {/* Trust badges row */}
+            <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-gray-400">
+              {[
+                { label: "No Obligation" },
+                { label: "Response Within 2 Hours" },
+                { label: "Licensed & Insured" },
+                { label: "5-Year Warranty" },
+              ].map((badge, i) => (
+                <span key={i} className="flex items-center gap-1.5">
+                  <svg className="w-4 h-4 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  {badge.label}
+                </span>
+              ))}
+            </div>
+            </>
+          )}
         </div>
       </div>
 
