@@ -184,6 +184,8 @@ type CityServiceOverride = {
   serviceLabel?: string;
   /** Page-specific H1 (the shared service name and page title are unchanged). */
   h1?: string;
+  /** Optional label for the FAQ section heading only (defaults to serviceLabel). */
+  faqHeadingLabel?: string;
   heroLine: string;
   bodyH2: string;
   bodySubtitle: string;
@@ -248,6 +250,7 @@ const cityServiceOverrides: Record<string, CityServiceOverride> = {
     metaDescription: "Considering an ADU in Welland? What to check first: where the unit fits in your home, zoning, servicing and the approvals the City of Welland may require.",
     offerDescription: "ADU projects for homeowners in Welland, Ontario.",
     serviceLabel: "ADUs",
+    faqHeadingLabel: "ADU",
     h1: "ADUs in Welland, Ontario",
     nearbyAnchor: "ADUs",
     heroLine: "Considering an ADU in Welland? Start with your house, your lot and the rules that apply.",
@@ -285,6 +288,7 @@ const cityServiceOverrides: Record<string, CityServiceOverride> = {
     metaDescription: "Considering an ADU in Fort Erie? Key questions for older and former cottage homes: zoning, servicing, year-round use and Town of Fort Erie approvals.",
     offerDescription: "ADU projects for homeowners in Fort Erie, Ontario.",
     serviceLabel: "ADUs",
+    faqHeadingLabel: "ADU",
     h1: "ADUs in Fort Erie, Ontario",
     nearbyAnchor: "ADUs",
     heroLine: "Considering an ADU in Fort Erie? Start with your property, its servicing and the rules that apply.",
@@ -585,7 +589,7 @@ export default async function CityServicePage({ params }: PageProps) {
       {/* FAQ */}
       <section className="py-14 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black text-gray-900 mb-6">{serviceLabel} FAQs for {city.name} Homeowners</h2>
+          <h2 className="text-2xl font-black text-gray-900 mb-6">{override?.faqHeadingLabel ?? serviceLabel} FAQs for {city.name} Homeowners</h2>
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <details key={i} className="bg-white rounded-xl shadow-sm border border-gray-100 group">
